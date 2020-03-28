@@ -6,45 +6,33 @@
   .category-dropdown
     = render 'categories/shared/category_tree'
 
-- cache 'billboards' do
+/- cache 'billboards' do
   = render 'billboards'
 
-- cache 'genobox' do
+/- cache 'genobox' do
   = render 'genobox_aside'
 
-/- cache 'fairmondo_spiel' do
-/  = render 'fairmondo_spiel'
-
-/ - cache 'usp_teaser' do
-/   = render 'usp_teaser'
-
-- cache 'filter_boxes' do
+/- cache 'filter_boxes' do
   = render 'filter_boxes'
 
-= render 'last_hearted_libraries', last_hearted_libraries: @last_hearted_libraries
+/= render 'last_hearted_libraries', last_hearted_libraries: @last_hearted_libraries
 
 = render 'article_queue', number: 1, side: :left, queue: @queue1
 
 = render 'article_queue', number: 2, side: :right, queue: @queue2
 
-= render 'trending_libraries', trending_libraries: @trending_libraries
+/= render 'trending_libraries', trending_libraries: @trending_libraries
 
-- cache 'card_slides' do
+/- cache 'card_slides' do
   = render 'card_slides'
 
-= render 'article_queue', number: 3, side: :right, queue: @donation_articles
+/= render 'article_queue', number: 3, side: :right, queue: @donation_articles
 
-- cache 'user_slides' do
+/- cache 'user_slides' do
   = render 'user_slides'
 
-/- cache 'coop_teaser' do
-/  = render 'coop_teaser'
-
-/- cache 'blog_teaser' do   / hide blog teaser temporarily since resources are not served via SSL, which makes fairmondo.de 'insecure'
-/  = render 'blog_teaser'
-
-- cache 'references' do
+/- cache 'references' do
   = render 'references'
 
-- cache 'ngo_logos' do
+/- cache 'ngo_logos' do
   = render 'ngo_logos'
