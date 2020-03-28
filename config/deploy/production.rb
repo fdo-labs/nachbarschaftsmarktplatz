@@ -3,9 +3,8 @@
 #   See the COPYRIGHT file for details.
 
 set :stage, :production
-set :deploy_to, '/var/www/fairnopoly'
+set :deploy_to, '/home/deploy/nama/'
 
-server '78.109.61.168', user: 'deploy', roles: %w{web app db sidekiq}
-server '78.109.61.169', user: 'deploy', roles: %w{web app sidekiq console}
+server '78.47.131.16', user: 'deploy', roles: %w{web app db sidekiq console}
 
-set :branch, ENV['BRANCH_NAME'] || 'master'
+set :branch, ENV['BRANCH_NAME'] || 'develop'

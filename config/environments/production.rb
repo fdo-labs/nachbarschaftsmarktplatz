@@ -55,7 +55,7 @@ Fairmondo::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'www.fairmondo.de', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.base_host, protocol: 'https' }
 
   config.dependency_loading = true if $rails_rake_task
   #http://stackoverflow.com/questions/4300240/rails-3-rake-task-cant-find-model-in-production
@@ -79,10 +79,10 @@ Fairmondo::Application.configure do
   }
 
   # Premailer configuration
-  Premailer::Rails.config.merge!(base_url: "https://www.fairmondo.de")
+  Premailer::Rails.config.merge!(base_url: Rails.application.secrets.base_url)
 
   # Set host by default
-  Rails.application.routes.default_url_options[:host] = 'https://www.fairmondo.de'
+  Rails.application.routes.default_url_options[:host] = Rails.application.secrets.base_host
 
   # Memcached
   config.cache_store = :dalli_store, '10.0.2.181', { :namespace => "fairmondo", :expires_in => 1.day, :compress => true }

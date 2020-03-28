@@ -22,8 +22,8 @@ end
 
 # Try out database storage in Redis for staging
 # http://www.mikeperham.com/2015/09/24/storing-data-with-redis/
-redis_staging = { url: 'redis://10.0.2.181:6380/4' }
-redis_production = { url: 'redis://10.0.2.181:6379', namespace: 'fairnopoly' }
+redis_staging = { url: 'redis://localhost:6379/4', namespace: 'staging' }
+redis_production = { url: 'redis://localhost:6379', namespace: 'prod' }
 
 Sidekiq.configure_server do |config|
   if Rails.env.staging?

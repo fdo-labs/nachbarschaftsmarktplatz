@@ -52,7 +52,7 @@ Fairmondo::Application.configure do
 
   # Enable delivery errors
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'staging.fairmondo.de', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.base_host, protocol: 'https' }
 
   config.dependency_loading = true if $rails_rake_task
   #http://stackoverflow.com/questions/4300240/rails-3-rake-task-cant-find-model-in-production
@@ -76,8 +76,8 @@ Fairmondo::Application.configure do
   }
 
   # Set host by default
-  Rails.application.routes.default_url_options[:host] = 'staging.fairmondo.de'
+  Rails.application.routes.default_url_options[:host] = Rails.application.secrets.base_host
   Rails.application.routes.default_url_options[:protocol] = 'https'
   #Memcached
-  config.cache_store = :dalli_store, '10.0.2.181', { :namespace => "fairmondo_stage", :expires_in => 1.day, :compress => true }
+  config.cache_store = :dalli_store, 'localhost', { :namespace => "fairmondo_stage", :expires_in => 1.day, :compress => true }
 end
