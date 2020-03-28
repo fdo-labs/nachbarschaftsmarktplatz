@@ -69,4 +69,16 @@ module WelcomeHelper
   def calendar_window_link(window_num)
     CALENDAR_WINDOW_LINKS[window_num]
   end
+
+  def user_addresses_as_json
+    LegalEntity.all.map{ |entity| 
+      address = Address.find_by(user:entity); 
+      address === nil ? false : {
+        company_name: [address.company_name, entity.fullname].find(&:present?), 
+        address: entity.address, 
+        about: entity.about_me,
+        image: entity.image_url(:profile)
+      } 
+      }.to_json
+  end
 end
