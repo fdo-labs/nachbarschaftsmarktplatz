@@ -345,7 +345,7 @@ GEM
     netrc (0.11.0)
     newrelic_rpm (6.8.0.360)
     nio4r (2.5.2)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.2)
       nokogiri (~> 1.8, >= 1.8.4)
@@ -592,7 +592,7 @@ GEM
     timers (4.3.0)
     tins (1.24.1)
       sync
-    tinymce-rails (4.1.10)
+    tinymce-rails (4.2.1)
       railties (>= 3.1.1)
     tinymce-rails-langs (4.20140129)
       tinymce-rails (~> 4.0)
@@ -724,7 +724,7 @@ DEPENDENCIES
   susy
   therubyracer
   therubyrhino
-  tinymce-rails (= 4.1.10)
+  tinymce-rails (= 4.2.1)
   tinymce-rails-langs (= 4.20140129)
   uglifier
   webmock
