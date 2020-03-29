@@ -1,4 +1,4 @@
-<img alt='Nachbarschaftsmarktplatz src="https://github.com/fdo-labs/nachbarschaftsmarktplatz/doc/NMP_Logo_Black_Wide.png">
+https://github.com/jakobkolb/nachbarschaftsmarktplatz/blob/develop/doc/NMP_Logo_Black_Wide.png
 
 = Welcome to the Fairmondo repository
 
