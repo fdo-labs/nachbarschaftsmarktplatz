@@ -70,7 +70,7 @@ module ApplicationHelper
     if Rails.application.config.assets.compile
       raw Rails.application.assets.find_asset(css_path)
     else
-      raw Rails.application.assets_manifest.find_sources(css_path).first
+      css_path
     end
   end
 
