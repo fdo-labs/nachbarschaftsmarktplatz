@@ -1,6 +1,6 @@
 https://github.com/jakobkolb/nachbarschaftsmarktplatz/blob/develop/doc/NMP_Logo_Black_Wide.png
 
-= Welcome to the Fairmondo repository
+= Welcome to the Nachbarschaftsmarktplatz repository
 
 {<img src="https://travis-ci.org/fairmondo/fairmondo.svg?branch=develop" alt="Build Status" />}[https://travis-ci.org/fairmondo/fairmondo] {<img src="https://coveralls.io/repos/fairmondo/fairmondo/badge.svg?branch=develop" alt="Coverage Status" />}[https://coveralls.io/r/fairmondo/fairmondo?branch=develop] {<img src="https://codeclimate.com/github/fairmondo/fairmondo.png" />}[https://codeclimate.com/github/fairmondo/fairmondo] {<img src="https://gemnasium.com/fairmondo/fairmondo.svg" alt="Dependency Status" />}[https://gemnasium.com/fairmondo/fairmondo] {<img src="http://inch-ci.org/github/fairmondo/fairmondo.png" alt="Inline docs" />}[http://inch-ci.org/github/fairmondo/fairmondo]
 
@@ -19,7 +19,7 @@ If you are not sure how to <em>install Ruby and the Ruby on Rails framework</em>
 
 Make sure you install <em>2.2.2</em>. and not <em>ruby 1.9.3-p392</em>.
 
-=== Fairmondo Project Setup
+=== Nachbarschaftsmarktplatz Project Setup
 
 * Set up a local git repository and switch to branch "develop"
     git clone git@github.com:fairmondo/fairmondo.git
