@@ -68,10 +68,10 @@ module ApplicationHelper
     # behavior of Rails.application.assets changed in rails 3.5.2 for production environment
     # see https://github.com/rails/sprockets-rails/issues/294
     if Rails.application.config.assets.compile
-      raw Rails.application.assets.find_asset(css_path)
-    else
-      css_path
+      Rails.application.assets.find_asset(css_path)
     end
+    
+    css_path
   end
 
   def money value
