@@ -2,10 +2,10 @@ de:
   layouts:
     partials:
       shared:
-        copyright_html: &copyright "&copy; Copyright 2017 Fairmondo eG"
+        copyright_html: &copyright "&copy; Copyright 2020 Nachbarschaftsmarktplatz.de"
       footer:
         company:
-          heading: "Fairmondo"
+          heading: "Nachbarschaftsmarktplatz"
           about_us: "Über Uns"
           team: "Team"
           transparency: "Transparenz"
@@ -14,6 +14,8 @@ de:
           press: "Presse"
           blog: "Blog"
           newsletter: "Newsletter"
+          map: "Nachbarschaftskarte"
+          open_source: "GitHub"
         marketplace:
           heading: "Marktplatz"
           sign_up: "Registrieren"
@@ -81,7 +83,7 @@ de:
           libraries: "Sammlungen"
         subscriptions: "Runde Sache Abo"
         myfairmondo:
-          title: 'Mein Fairmondo'
+          title: 'Mein Konto'
           myprofile: 'Mein Profil'
           myarticles: 'Meine Artikel'
           mylibraries: 'Meine Sammlungen'
