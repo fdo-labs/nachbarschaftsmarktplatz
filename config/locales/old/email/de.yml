@@ -45,6 +45,7 @@ de:
         reply_button: 'Anfrage beantworten'
         article_link_text: 'Den Artikel zu der Rückfrage findest Du unter '
       activation:
+        subject: '[Fairmondo] Du hast einen Artikel auf Fairmondo eingestellt'
         text: 'Du hast erfolgreich einen Artikel auf Fairmondo eingestellt.'
         fees: 'Bei erfolgreichem Verkauf fallen folgende Gebühren an (inkl. 19% MwSt.):'
         cancellation_heading: 'Widerrufsbelehrung'
@@ -86,7 +87,9 @@ de:
 
           Datum'
       mass_upload_finished:
+        success_subject: '[Fairmondo] Dein CSV-Upload ist abgeschlossen'
         success: 'Dein CSV-Upload %{file_name} wurde erfolgreich verarbeitet.'
+        failure_subject: '[Fairmondo] Bei deinem CSV-Upload sind Fehler aufgetreten'
         failure: 'Bei der Verarbeitung Deiner CSV Datei durch das System ist ein Fehler aufgetreten. Klicke hier um den Fehler anzuzeigen:'
         to_activate: 'Dabei musst Du noch %{count} Artikel aktivieren.'
         created_articles: 'Neu erstellte Artikel: %{count}'
@@ -98,6 +101,7 @@ de:
       mass_activation:
         text: 'Du hast erfolgreich per CSV-Upload eingestellte Artikel aktiviert.'
         to_csv: 'Hier kommst Du zu Deinem CSV-Upload: '
+        subject: '[Fairmondo] Du hast Deine per CSV-Dateien eingestellten Artikel aktiviert'
       mass_deletion:
         text: 'Du hast erfolgreich Artikel gelöscht.'
         to_csv: 'Hier kommst Du zu Deinem CSV-Upload: '

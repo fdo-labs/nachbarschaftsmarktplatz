@@ -19,11 +19,8 @@ Fairmondo::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.js_compressor = :uglifier
 
-  # Compile assets that are not required in the application.js
-  config.assets.precompile += %w(ajax_history.js)
-
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -58,14 +55,14 @@ Fairmondo::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'www.fairmondo.de', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.base_host, protocol: Rails.application.secrets.base_protocol }
 
   config.dependency_loading = true if $rails_rake_task
   #http://stackoverflow.com/questions/4300240/rails-3-rake-task-cant-find-model-in-production
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = [I18n.default_locale]
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
@@ -82,13 +79,13 @@ Fairmondo::Application.configure do
   }
 
   # Premailer configuration
-  Premailer::Rails.config.merge!(base_url: "https://www.fairmondo.de")
+  Premailer::Rails.config.merge!(base_url: Rails.application.secrets.base_url)
 
   # Set host by default
-  Rails.application.routes.default_url_options[:host] = 'https://www.fairmondo.de'
+  Rails.application.routes.default_url_options[:host] = Rails.application.secrets.base_host
 
   # Memcached
-  config.cache_store = :dalli_store, '10.0.2.181', { :namespace => "fairmondo", :expires_in => 1.day, :compress => true }
+  config.cache_store = :dalli_store, 'localhost', { :namespace => "nama", :expires_in => 1.day, :compress => true }
 
   # Rack-Rewrite paths
   require "#{config.root}/config/rewrites.rb"

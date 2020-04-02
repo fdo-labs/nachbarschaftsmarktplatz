@@ -5,28 +5,20 @@ footer.l-footer
     nav#l-footer-nav-main
 
       / Company
-      section#l-footer-nav-company
+      section
         h4
           = t('.company.heading')
         ul
           li
             = link_to t('.company.about_us'), '/ueber_uns'
           li
-            = link_to t('.company.team'), '/team'
+            = link_to t('.company.map'), 'https://map.nachbarschaftsmarktplatz.de/', target: "_blank"
           li
-            = link_to t('.company.transparency'), '/transparenz'
-          li
-            = link_to t('.company.common_good_balance_sheet'), '/gwoe_bilanz'
-          li
-            = link_to t('.company.jobs'), '/jobs'
-          li
-            = link_to t('.company.press'), '/presse'
-          li
-            = link_to t('.company.blog'), 'https://info.fairmondo.de',
-                      target: '_blank'
+            = link_to t('.company.github'), 'https://github.com/fdo-labs/nachbarschaftsmarktplatz', target: "_blank"
+          
 
       / Marketplace
-      section#l-footer-nav-marketplace
+      section
         h4
           = t('.marketplace.heading')
         ul
@@ -36,79 +28,14 @@ footer.l-footer
             = link_to t('.marketplace.buy'), articles_path
           li
             = link_to t('.marketplace.sell'), new_article_path
-          li
-            = link_to t('.marketplace.affiliate'), '/partnerprogramm'
-          li
+          /li
             = link_to t('.marketplace.fairmondo_shop'), '/libraries/8561',
                       data: navigation_push
           li
             = link_to t('.marketplace.categories'), categories_path
 
-      / Subscription
-      section#l-footer-nav-subscription
-        h4
-          = t('.subscription.heading')
-        ul
-          li
-            = link_to t('.subscription.order'), 'https://www.fairmondo.de/users/das-fairmondo-abo',
-                      target: '_blank'
-          li
-            = link_to t('.subscription.chocolate'),
-                      'https://www.fairmondo.de/articles/das-schoko-abo-das-fairmondo-abo',
-                      target: '_blank'
-          li
-            = link_to t('.subscription.coffee'),
-                      'https://www.fairmondo.de/articles/das-kaffee-abo',
-                      target: '_blank'
-          li
-            = link_to t('.subscription.fair_world'),
-                      'https://www.fairmondo.de/articles/das-faire-welt-abo-10',
-                      target: '_blank'
-
-      / Cooperative
-      section#l-footer-nav-cooperative
-        h4
-          = t('.cooperative.heading')
-        ul
-          li
-            = link_to t('.cooperative.twopointzero'), '/genossenschaft'
-          li
-            = link_to t('.cooperative.subscribe_shares'), '/anteile'
-          li
-            = link_to t('.cooperative.statute'), '/satzung'
-
-
-      / Community
-      section#l-footer-nav-community
-        h4
-          = t('.community.heading')
-        ul
-          li
-            = link_to t('.community.participate'),
-                      'http://mitmachen.fairmondo.de/',
-                      target: '_blank'
-          li
-            = link_to t('.community.ambassador_programme'),
-                      'http://mitmachen.fairmondo.de/botschafterprogramm/was-ist-das-botschafterprogramm/',
-                      target: '_blank'
-          li
-            = link_to t('.community.materials'),
-                      'http://mitmachen.fairmondo.de/materialecke/',
-                      target: '_blank'
-          li
-            = link_to t('.community.events'),
-                      'http://mitmachen.fairmondo.de/veranstaltungen/',
-                      target: '_blank'
-          li
-            = link_to t('.community.open_source'),
-                      'https://github.com/fairmondo/fairmondo',
-                      target: '_blank'
-          li
-            = link_to t('.community.forum'), 'https://forum.fairmondo.de/',
-                      target: '_blank'
-
       / Service
-      section#l-footer-nav-service
+      section
         h4
           = t('.service.heading')
         ul
@@ -122,26 +49,28 @@ footer.l-footer
           li
             = link_to t('.service.contact'), '/kontakt'
 
+      section
+        a href="https://wirvsvirushackathon.org/" target="_blank" = image_tag('wirvsvirus_logo-480x208.png', style:"width:100%")
+    
 
     / 'Banner': Logo and Social media links
     p.l-footer-banner
       / Logo
-      = link_to image_tag('logo_small.png', alt: t('shared.fairmondo.name')),
+      /= link_to image_tag('logo_small.png', alt: t('shared.fairmondo.name')),
                 root_path, class: 'l-footer-banner-logo'
 
       / Social media
-      = link_to fa_icon('facebook 2x'), 'https://www.facebook.com/fairmondo',
+      /= link_to fa_icon('facebook 2x'), 'https://www.facebook.com/fairmondo',
                 class: 'l-footer-banner-icon',
                 title: t('.socialmedia.facebook'), target: '_blank'
 
-      = link_to fa_icon('instagram 2x'), 'https://www.instagram.com/fairmondo',
+      /= link_to fa_icon('instagram 2x'), 'https://www.instagram.com/fairmondo',
                 class: 'l-footer-banner-icon',
                 title: t('.socialmedia.instagram'), target: '_blank'
 
-      = link_to fa_icon('twitter 2x'), 'https://twitter.com/fairmondo',
+      /= link_to fa_icon('twitter 2x'), 'https://twitter.com/fairmondo',
                 class: 'l-footer-banner-icon', title: t('.socialmedia.twitter'),
                 target: '_blank'
-
 
     / Copyright
     p.l-footer-copyright

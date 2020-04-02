@@ -6,7 +6,7 @@ class ArticleMailer < ActionMailer::Base
   include MailerHelper
 
   default from: EMAIL_ADDRESSES['default']
-  before_filter :inline_logos, except: :report_article
+  before_action :inline_logos, except: :report_article
   layout 'email', except: :report_article
 
   def report_article article, user, text
@@ -23,6 +23,7 @@ class ArticleMailer < ActionMailer::Base
     @article  = Article.find(resource_id)
     @from     = @user.email
     @subject  = I18n.t('article.show.contact.mail_subject')
+    @article_path = Rails.application.routes.url_helpers.article_path(@article.id)
     mail to: @article.seller_email, from: @from, subject: @subject
   end
 
@@ -31,26 +32,26 @@ class ArticleMailer < ActionMailer::Base
     @article.calculate_fees_and_donations # just to be save
     @user    = @article.user
     terms_pdf
-    mail(to: @user.email, subject: '[Fairmondo] Du hast einen Artikel auf Fairmondo eingestellt')
+    mail(to: @user.email, subject: I18n.t('email.article.activation.subject') )
   end
 
   def mass_upload_activation_message mass_upload_id
     @mass_upload = MassUpload.find mass_upload_id
     @user = @mass_upload.user
     terms_pdf
-    mail(to: @user.email, subject: '[Fairmondo] Du hast Deine per CSV-Dateien eingestellten Artikel aktiviert')
+    mail(to: @user.email, subject: I18n.t('email.article.mass_activation.subject') )
   end
 
   def mass_upload_failed_message mass_upload_id
     @mass_upload = MassUpload.find mass_upload_id
     @user = @mass_upload.user
-    mail(to: @user.email, subject: '[Fairmondo] Bei deinem CSV-Upload sind Fehler aufgetreten')
+    mail(to: @user.email, subject: I18n.t('email.article.mass_upload_finished.failure_subject') )
   end
 
   def mass_upload_finished_message mass_upload_id
     @mass_upload = MassUpload.find mass_upload_id
     @user = @mass_upload.user
-    subject = '[Fairmondo] Dein CSV-Upload ist abgeschlossen'
+    subject = I18n.t('email.article.mass_upload_finished.success_subject')
     if @mass_upload.articles_for_mass_activation.any?
       subject << '. Es liegen Artikel zur Aktivierung bereit!'
       @created_count = @mass_upload.created_articles.count
