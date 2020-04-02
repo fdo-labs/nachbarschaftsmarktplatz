@@ -34,8 +34,8 @@ html<> class='no-js' lang=I18n.locale
         = render '/layouts/partials/header_categories'
 
     - if controller.controller_name == 'welcome'
-    /  .map
-    /    = render '/welcome/map'
+      .map-container
+        = render '/welcome/map'
       
     .wrapper
       main.l-main
