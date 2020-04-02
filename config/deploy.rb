@@ -3,7 +3,7 @@
 #   See the COPYRIGHT file for details.
 
 # config valid only for Capistrano 3.1
-lock '3.11.2'
+lock '3.12.1'
 
 set :application, 'nachbarschaftsmarktplatz'
 set :repo_url, 'git://github.com/fdo-labs/nachbarschaftsmarktplatz.git'
