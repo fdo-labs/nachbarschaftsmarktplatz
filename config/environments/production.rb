@@ -99,7 +99,7 @@ Fairmondo::Application.configure do
     ignore_crawlers: %w{Googlebot bingbot},
     email: {
       email_prefix: '[Production] ',
-      sender_address: Rails.application.secrets.default_sender
+      sender_address: Rails.application.secrets.default_sender,
       exception_recipients: [Rails.application.secrets.exceptions_recipient]
     }
 end
