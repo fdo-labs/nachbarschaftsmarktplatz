@@ -100,6 +100,6 @@ Fairmondo::Application.configure do
     email: {
       email_prefix: '[Production] ',
       sender_address: Rails.application.secrets.default_sender
-      exception_recipients: %w{Rails.application.secrets.exceptions_recipient}
+      exception_recipients: [Rails.application.secrets.exceptions_recipient]
     }
 end
