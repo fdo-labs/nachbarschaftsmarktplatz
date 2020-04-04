@@ -26,7 +26,7 @@ de:
       send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
       send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit einer Anleitung, wie Du Dein Profil bestätigen kannst.'
       confirmed: >
-        Wir begrüßen Dich herzlich bei Fairmondo, dem fairen Online-Marktplatz in Hand der Nutzer*innen! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
+        Wir begrüßen Dich herzlich auf dem Nachbarschaftsmarktplatz, dem fairen Online-Marktplatz in Hand der Nutzer*innen! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
         Diese kannst Du in Deinem Profil eintragen.
     registrations:
       edit:
@@ -49,35 +49,35 @@ de:
       failure: 'Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     mailer:
       welcome_mail:
-        subject: '[Fairmondo] Anleitung zur Bestätigung Deines Accounts'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung zur Bestätigung Deines Accounts'
       confirmation_instructions:
-        subject: '[Fairmondo] Bitte bestätige Deine E-Mail-Adresse'
+        subject: '[Nachbarschaftsmarktplatz] Bitte bestätige Deine E-Mail-Adresse'
       reset_password_instructions:
-        subject: '[Fairmondo] Anleitung um Dein Passwort zurückzusetzen'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung um Dein Passwort zurückzusetzen'
       unlock_instructions:
-        subject: '[Fairmondo] Anleitung um Deinen Account freizuschalten'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung um Deinen Account freizuschalten'
 
     # EMAIL:
     confirmation:
       resend: "Registrierungs-E-Mail erneut schicken"
       text: >
-        Vielen Dank für Deine Registrierung bei Fairmondo, dem fairen Online-Marktplatz in Hand der Nutzer*innen!
-        Durch Deine Registrierung hast Du Dich bereit erklärt, die angehängten AGB und die Datenschutzerklärung von Fairmondo zu akzeptieren.
+        Vielen Dank für Deine Registrierung auf dem Nachbarschaftsmarktplatz, dem fairen Online-Marktplatz in Hand der Nutzer*innen!
+        Durch Deine Registrierung hast Du Dich bereit erklärt, die angehängten AGB und die Datenschutzerklärung vom Nachbarschaftsmarktplatz zu akzeptieren.
         Bitte bestätige Deine E-Mail-Adresse sowie den Erhalt und die Lesbarkeit der beigefügten AGB und Datenschutzbestimmungen um den Registrierungsvorgang abzuschließen.
         Für die Bestätigung der Registrierung gehe bitte auf den folgenden Link:
       link: "Meine Registrierung sowie den Erhalt und die Lesbarkeit der AGB und Datenschutzbestimmungen bestätigen."
       link_if_newsletter: 'Meine Registrierung sowie den Erhalt und die Lesbarkeit der AGB und Datenschutzbestimmungen und die Anmeldung zum Newsletter bestätigen.'
-      ignoremail: "Falls Du diese E-Mail nicht angefordert hast, wende Dich bitte an unseren Kundenservice: kundenservice@fairmondo.de oder ignoriere einfach diese E-Mail."
+      ignoremail: "Falls Du diese E-Mail nicht angefordert hast, wende Dich bitte an unseren Kundenservice: nmp@posteo.de oder ignoriere einfach diese E-Mail."
       email_change_info: "(Falls Du deine E-Mail geändert hast, wird diese nach Bestätigung durch Klick auf den Link geändert.)"
       email:
         text: "Du hast Dich entweder neu auf dem Marktplatz registriert, oder Deine E-Mail-Adresse geändert. Wir bitten Dich deshalb, Deine E-Mail-Adresse zu bestätigen. Klicke dazu auf folgenden Link:"
         link: "E-Mail-Adresse bestätigen"
         info: "Deine E-Mail-Adresse ändert sich erst, wenn Du den oben angegebenen Link benutzt, um die neue E-Mail-Adresse zu bestätigen."
     reset:
-      text: "Jemand hat einen Link zum Ändern Deines Passworts auf Fairmondo angefordert. Um Dein Passwort zu ändern, klicke auf den folgenden Link:"
+      text: "Jemand hat einen Link zum Ändern Deines Passworts auf dem Nachbarschaftsmarktplatz angefordert. Um Dein Passwort zu ändern, klicke auf den folgenden Link:"
       link: "Passwort hier ändern"
       ignoremail_begin: "Falls Du diese E-Mail nicht angefordert hast, wende Dich bitte an unseren Kundenservice: "
-      ignoremail_addr: "kundenservice@fairmondo.de"
+      ignoremail_addr: "nmp@posteo.de"
       ignoremail_end: ", oder ignoriere einfach diese E-Mail."
       info: "Dein Passwort ändert sich erst, wenn Du den oben angegebenen Link benutzt, um ein neues Passwort anzulegen."
       request: "Bitte sende mir Anweisungen zu, um mein Passwort zurückzusetzen"
@@ -89,7 +89,7 @@ de:
       info: "Dein Benutzerkonto wurde aufgrund einer ungewöhnlich hohen Anzahl fehlgeschlagener Login-Versuche gesperrt."
       linktext: "Klicke auf den unten stehenden Link, um Dein Benutzerkonto freizuschalten:"
       link: "Benutzerkonto freischalten"
-      ignoremail: "Falls Du diese E-Mail nicht angefordert hast, wende Dich bitte an unseren Kundenservice: kundenservice@fairmondo.de, oder ignoriere einfach diese E-Mail."
+      ignoremail: "Falls Du diese E-Mail nicht angefordert hast, wende Dich bitte an unseren Kundenservice: nmp@posteo.de, oder ignoriere einfach diese E-Mail."
 
     # LINKS:
     links:
