@@ -59,7 +59,7 @@ de:
       transaction_number: "Transaktionsnummer: "
       seller:
         heading: "Auftragsdaten"
-        congratulation: "Herzlichen Glückwunsch, Du hast einen Artikel auf dem Nachbarschaftsmarktplatz.de verkauft. Wir haben Dir bereits eine E-Mail mit allen Daten zur Bestellung zugeschickt."
+        congratulation: "Herzlichen Glückwunsch, Du hast einen Artikel auf dem Nachbarschaftsmarktplatz verkauft. Wir haben Dir bereits eine E-Mail mit allen Daten zur Bestellung zugeschickt."
         congratulation_invoice: "Bitte füge dem Artikel eine Rechnung mit detailierten Zahlungsanweisungen hinzu."
         cash_questions: "Der*die Käufer*in wird sich mit Dir in Verbindung setzen um einen Übergabetermin zu vereinbaren. Alternativ kannst Du den*die Käufer*in auch kontaktieren."
     completed:
