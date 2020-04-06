@@ -29,11 +29,11 @@ nav id="l-header-mnav" class="l-header-mnav" role="navigation"
     - if current_cart && policy(current_cart).show?(cookies.signed[:cart])\
         && !current_cart.line_items.empty?
       li.l-header-mnav-menu-item
-        = link_to t('.cart.title', count: current_cart.line_item_count),
+        = link_to t('.cart.title_html', count: current_cart.line_item_count),
                   current_cart, data: navigation_push
     - else
       li.l-header-mnav-menu-item
-        = link_to t('.cart.title', count: 0),
+        = link_to t('.cart.title_html', count: 0),
                   empty_cart_path, data: navigation_push
 
     / Admin
@@ -131,10 +131,10 @@ nav.l-header-nav
         && !current_cart.line_items.empty?
       li
         button.Button 
-          = link_to t('.cart.title', count: current_cart.line_item_count),
+          = link_to t('.cart.title_html', count: current_cart.line_item_count),
                   current_cart, data: navigation_push
     - else
       li
         button.Button 
-          = link_to t('.cart.title', count: 0), empty_cart_path,
+          = link_to t('.cart.title_html', count: 0), empty_cart_path,
                   data: navigation_push
