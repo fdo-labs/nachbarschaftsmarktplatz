@@ -16,7 +16,7 @@ class BankDetailsControllerTest < ActionController::TestCase
       context 'if parameter validation was successful' do
         it 'should return true' do
           get :check_iban, format: :json
-          response.body.must_equal 'true'
+          value(response.body).must_equal 'true'
         end
       end
 
@@ -24,7 +24,7 @@ class BankDetailsControllerTest < ActionController::TestCase
         it 'should return false' do
           KontoAPI.stubs(:valid?).returns(false)
           get :check_iban, format: :json
-          response.body.must_equal 'false'
+          value(response.body).must_equal 'false'
         end
       end
     end
@@ -40,7 +40,7 @@ class BankDetailsControllerTest < ActionController::TestCase
       context 'if parameter validation was successful' do
         it 'should return true' do
           get :check_bic, format: :json
-          response.body.must_equal 'true'
+          value(response.body).must_equal 'true'
         end
       end
 
@@ -48,7 +48,7 @@ class BankDetailsControllerTest < ActionController::TestCase
         it 'should return false' do
           KontoAPI.stubs(:valid?).returns(false)
           get :check_bic, format: :json
-          response.body.must_equal 'false'
+          value(response.body).must_equal 'false'
         end
       end
     end

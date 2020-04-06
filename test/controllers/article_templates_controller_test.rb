@@ -36,7 +36,7 @@ class ArticleTemplatesControllerTest < ActionController::TestCase
 
     it 'assigns the requested article_template as @article_template' do
       get :edit, params:{ id: @article_template.to_param }
-      assigns(:article_template).must_equal(@article_template)
+      value(assigns(:article_template)).must_equal(@article_template)
       assert_template(:edit)
     end
   end
@@ -51,8 +51,8 @@ class ArticleTemplatesControllerTest < ActionController::TestCase
 
       it 'assigns a newly created article_template as @article_template' do
         post :create, params:{ article: valid_attributes }
-        assigns(:article_template).must_be_instance_of Article
-        assigns(:article_template).persisted?.must_equal true
+        value(assigns(:article_template)).must_be_instance_of Article
+        value(assigns(:article_template).persisted?).must_equal true
       end
 
       it 'redirects to the collection' do
@@ -87,12 +87,12 @@ class ArticleTemplatesControllerTest < ActionController::TestCase
       it 'updates the requested article_template' do
         put :update, params: { id: @article_template.to_param, article: { title: 'updated Title' } }
         @article_template.reload
-        @article_template.title.must_equal 'updated Title'
+        value(@article_template.title).must_equal 'updated Title'
       end
 
       it 'assigns the requested article_template as @article_template' do
         put :update, params:{ id: @article_template.to_param, article: valid_update_attributes }
-        assigns(:article_template).must_equal(@article_template)
+        value(assigns(:article_template)).must_equal(@article_template)
       end
 
       it 'redirects to the collection' do

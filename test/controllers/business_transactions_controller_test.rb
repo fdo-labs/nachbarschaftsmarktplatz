@@ -54,13 +54,13 @@ class BusinessTransactionsControllerTest < ActionController::TestCase
     it 'should the current user' do
       user = login
       get :export, params:{ date: { year: 2016, month: 3 } }
-      assigns(:user).must_equal(user)
+      value(assigns(:user)).must_equal(user)
     end
 
     it 'should assign the correct time_range' do
       login
       get :export, params:{ date: { year: 2016, month: 3 } }
-      assigns(:time_range).must_equal(
+      value(assigns(:time_range)).must_equal(
         (DateTime.new(2016, 3, 1).beginning_of_day)..(DateTime.new(2016, 3, 31).end_of_day)
       )
     end

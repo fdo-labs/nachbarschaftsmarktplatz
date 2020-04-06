@@ -22,13 +22,13 @@ class MassUploadArticleTest < ActiveSupport::TestCase
   describe 'methods' do
     describe '#done?' do
       it do
-        MassUploadArticle.new(process_identifier: 'test').done?.must_equal false
+        value(MassUploadArticle.new(process_identifier: 'test').done?).must_equal false
       end
       it do
-        MassUploadArticle.new(process_identifier: 'test', validation_errors: 'lala').done?.must_equal true
+        value(MassUploadArticle.new(process_identifier: 'test', validation_errors: 'lala').done?).must_equal true
       end
       it do
-        MassUploadArticle.new(process_identifier: 'test', article: Article.new).done?.must_equal true
+        value(MassUploadArticle.new(process_identifier: 'test', article: Article.new).done?).must_equal true
       end
     end
   end
@@ -67,7 +67,7 @@ class MassUploadArticleTest < ActiveSupport::TestCase
       mass_upload_article.process unsanitized_row_hash
       article.reload
 
-      article.quantity.must_equal quantity
+      value(article.quantity).must_equal quantity
     end
 
     it 'should update available quantity even if database column is not empty' do
@@ -82,7 +82,7 @@ class MassUploadArticleTest < ActiveSupport::TestCase
       article.reload
 
       article.activate
-      article.quantity_available.must_equal quantity
+      value(article.quantity_available).must_equal quantity
     end
   end
 

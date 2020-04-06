@@ -11,7 +11,7 @@ class UserTest < ActiveSupport::TestCase
   subject { User.new }
 
   it 'has a valid Factory' do
-    user.valid?.must_equal true
+    value(user.valid?).must_equal true
   end
 
   describe 'attributes' do
@@ -200,7 +200,7 @@ class UserTest < ActiveSupport::TestCase
   describe 'marketplace_owner_account' do
     it 'should be false for new User instances' do
       user = User.new
-      user.marketplace_owner_account.must_equal false
+      value(user.marketplace_owner_account).must_equal false
     end
   end
 
@@ -229,14 +229,14 @@ class UserTest < ActiveSupport::TestCase
   describe 'direct debit exemption' do
     it 'should be false for new User instances' do
       le = User.new
-      le.direct_debit_exemption.must_equal false
+      value(le.direct_debit_exemption).must_equal false
     end
   end
 
   describe 'next direct debit mandate number' do
     it 'should be 1 for new User instances' do
       user = User.new
-      user.next_direct_debit_mandate_number.must_equal 1
+      value(user.next_direct_debit_mandate_number).must_equal 1
     end
   end
 
@@ -247,35 +247,35 @@ class UserTest < ActiveSupport::TestCase
         second_article = create :article, seller: user
         user.articles.reload
         user.count_value_of_goods
-        user.value_of_goods_cents.must_equal(article.price_cents + second_article.price_cents)
+        value(user.value_of_goods_cents).must_equal(article.price_cents + second_article.price_cents)
       end
 
       it 'should not sum the value of inactive goods' do
         create :preview_article, seller: user
         user.count_value_of_goods
-        user.value_of_goods_cents.must_equal 0
+        value(user.value_of_goods_cents).must_equal 0
       end
     end
 
     describe '#fullname' do
       it 'returns correct fullname' do
-        user.fullname.must_equal "#{user.standard_address_first_name} #{user.standard_address_last_name}"
+        value(user.fullname).must_equal "#{user.standard_address_first_name} #{user.standard_address_last_name}"
       end
     end
 
     describe '#name' do
       it 'returns correct name' do
-        user.name.must_equal user.nickname
+        value(user.name).must_equal user.nickname
       end
     end
 
     describe '#is?' do
       it 'should return true when users have the same ID' do
-        user.is?(user).must_equal true
+        value(user.is?(user)).must_equal true
       end
 
       it "should return false when users don't have the same ID" do
-        user.is?(create(:user)).must_equal false
+        value(user.is?(create(:user))).must_equal false
       end
     end
 
@@ -283,40 +283,40 @@ class UserTest < ActiveSupport::TestCase
       let(:user) { build(:user, id: 1) }
 
       it 'should have 8 digits' do
-        user.customer_nr.length.must_equal 8
+        value(user.customer_nr.length).must_equal 8
       end
 
       it 'should use the user_id' do
-        user.customer_nr.must_equal "00000001"
+        value(user.customer_nr).must_equal "00000001"
       end
     end
 
     describe 'paypal_account_exists?' do
       it 'should be true if user has paypal account' do
-        create(:user, :paypal_data).paypal_account_exists?.must_equal true
+        value(create(:user, :paypal_data).paypal_account_exists?).must_equal true
       end
       it 'should be false if user does not have paypal account' do
-        user.paypal_account_exists?.must_equal false
+        value(user.paypal_account_exists?).must_equal false
       end
     end
 
     describe 'bank_account_exists?' do
       it 'should be true if user has bank account' do
-        user.bank_account_exists?.must_equal true
+        value(user.bank_account_exists?).must_equal true
       end
       it 'should be false if user does not have bank account' do
-        create(:user, :no_bank_data).bank_account_exists?.must_equal false
+        value(create(:user, :no_bank_data).bank_account_exists?).must_equal false
       end
     end
 
     describe 'bank_details_valid?' do
       it 'should return true if KontoAPI check succeeds' do
-        le_stubbed.bank_details_valid?.must_equal true
+        value(le_stubbed.bank_details_valid?).must_equal true
       end
 
       it 'should return false if KontoAPI check fails' do
         KontoAPI.stubs(:valid?).returns(false)
-        le_stubbed.bank_details_valid?.must_equal false
+        value(le_stubbed.bank_details_valid?).must_equal false
       end
     end
 
@@ -330,7 +330,7 @@ class UserTest < ActiveSupport::TestCase
         it 'should return invoice' do
           @alice.bankaccount_warning = false
 
-          @alice.payment_method.must_equal :payment_by_invoice
+          value(@alice.payment_method).must_equal :payment_by_invoice
         end
       end
 
@@ -343,13 +343,13 @@ class UserTest < ActiveSupport::TestCase
         it 'should return direct debit if bank details are valid' do
           @alice.bankaccount_warning = false
 
-          @alice.payment_method.must_equal :payment_by_direct_debit
+          value(@alice.payment_method).must_equal :payment_by_direct_debit
         end
 
         it 'should return invoice if bank details are not valid' do
           @alice.bankaccount_warning = true
 
-          @alice.payment_method.must_equal :payment_by_invoice
+          value(@alice.payment_method).must_equal :payment_by_invoice
         end
       end
     end
@@ -432,20 +432,20 @@ class UserTest < ActiveSupport::TestCase
         mandate = create :direct_debit_mandate_wo_user, user: alice
         mandate.activate!
 
-        alice.active_direct_debit_mandate.must_equal mandate
+        value(alice.active_direct_debit_mandate).must_equal mandate
       end
 
       it 'should return nil if no active mandate is present' do
         alice = create :user_alice
         create :direct_debit_mandate_wo_user, user: alice
 
-        alice.active_direct_debit_mandate.must_be_nil
+        value(alice.active_direct_debit_mandate).must_be_nil
       end
 
       it 'should return nil if no mandate is present' do
         alice = build_stubbed :user_alice
 
-        alice.active_direct_debit_mandate.must_be_nil
+        value(alice.active_direct_debit_mandate).must_be_nil
       end
     end
 
@@ -464,7 +464,7 @@ class UserTest < ActiveSupport::TestCase
       it 'should return a string with standard_addresse\'s address_line_1, address_line_2, zip and city' do
         u = User.new
         u.standard_address = Address.new(address_line_1: 'Sesame Street 1', address_line_2: 'c/o Cookie Monster', zip: '12345', city: 'Utopia')
-        u.address.must_equal 'Sesame Street 1, c/o Cookie Monster, 12345 Utopia'
+        value(u.address).must_equal 'Sesame Street 1, c/o Cookie Monster, 12345 Utopia'
       end
     end
 
@@ -483,50 +483,50 @@ class UserTest < ActiveSupport::TestCase
       end
 
       it 'should be calculated correctly for positive ratings' do
-        user.calculate_percentage_of_biased_ratings('positive', 10).must_equal 70.0
+        value(user.calculate_percentage_of_biased_ratings('positive', 10)).must_equal 70.0
       end
       it 'should be calculated correctly for negative ratings' do
-        user.calculate_percentage_of_biased_ratings('negative', 10).must_equal 10.0
+        value(user.calculate_percentage_of_biased_ratings('negative', 10)).must_equal 10.0
       end
     end
 
     describe '#email_for_invoicing' do
       it 'for legal entities, should use invoicing email if present' do
-        le_stubbed.email_for_invoicing.must_equal le_stubbed.invoicing_email
+        value(le_stubbed.email_for_invoicing).must_equal le_stubbed.invoicing_email
       end
 
       it 'for legal entities, should use standard email if no invoicing email is present' do
         le_stubbed.invoicing_email = ''
-        le_stubbed.email_for_invoicing.must_equal le_stubbed.email
+        value(le_stubbed.email_for_invoicing).must_equal le_stubbed.email
       end
 
       it 'for private users, should use standard email if no invoicing email is present' do
-        private_stubbed.email_for_invoicing.must_equal private_stubbed.email
+        value( private_stubbed.email_for_invoicing).must_equal private_stubbed.email
       end
 
       it 'for private users, should use standard email even if invoicing email is present' do
         private_stubbed.invoicing_email = 'invoices@example.com'
-        private_stubbed.email_for_invoicing.must_equal private_stubbed.email
+        value(private_stubbed.email_for_invoicing).must_equal private_stubbed.email
       end
     end
 
     describe '#email_for_order_notifications' do
       it 'for legal entities, should use order notifications email if present' do
-        le_stubbed.email_for_order_notifications.must_equal le_stubbed.order_notifications_email
+        value(le_stubbed.email_for_order_notifications).must_equal le_stubbed.order_notifications_email
       end
 
       it 'for legal entities, should use standard email if no order notifications email is present' do
         le_stubbed.order_notifications_email = ''
-        le_stubbed.email_for_order_notifications.must_equal le_stubbed.email
+        value(le_stubbed.email_for_order_notifications).must_equal le_stubbed.email
       end
 
       it 'for private users, should use standard email if no order notifications email is present' do
-        private_stubbed.email_for_order_notifications.must_equal private_stubbed.email
+        value(private_stubbed.email_for_order_notifications).must_equal private_stubbed.email
       end
 
       it 'for private users, should use standard email even if order notifications email is present' do
         private_stubbed.order_notifications_email = 'orders@example.com'
-        private_stubbed.email_for_order_notifications.must_equal private_stubbed.email
+        value(private_stubbed.email_for_order_notifications).must_equal private_stubbed.email
       end
     end
   end
@@ -536,11 +536,11 @@ class UserTest < ActiveSupport::TestCase
       let(:user) { create(:private_user) }
 
       it 'should have a valid factory' do
-        user.valid?.must_equal true
+        value(user.valid?).must_equal true
       end
 
       it 'should return the same model_name as User' do
-        PrivateUser.model_name.must_equal User.model_name
+        value(PrivateUser.model_name).must_equal User.model_name
       end
     end
 
@@ -548,11 +548,11 @@ class UserTest < ActiveSupport::TestCase
       let(:db_user) { build_stubbed(:legal_entity) }
 
       it 'should have a valid factory' do
-        db_user.valid?.must_equal true
+        value(db_user.valid?).must_equal true
       end
 
       it 'should return the same model_name as User' do
-        LegalEntity.model_name.must_equal User.model_name
+        value(LegalEntity.model_name).must_equal User.model_name
       end
 
       describe 'validations' do
@@ -582,22 +582,22 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become standard seller' do
           private_seller.rate_up
-          private_seller.standard_seller?.must_equal true
+          value(private_seller.standard_seller?).must_equal true
         end
 
         it 'should have a salesvolume of bad_salesvolume if not verified' do
           private_seller.verified = false
-          private_seller.max_value_of_goods_cents.must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
+          value(private_seller.max_value_of_goods_cents).must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
         end
 
         it 'should have a salesvolume of 17 if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
+          value(private_seller.max_value_of_goods_cents).must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
         end
 
         it 'should have a salesvolume of 17 if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
+          value(private_seller.max_value_of_goods_cents).must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
         end
       end # /bad seller
 
@@ -608,22 +608,22 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become good seller' do
           private_seller.rate_up
-          private_seller.good_seller?.must_equal true
+          value(private_seller.good_seller?).must_equal true
         end
 
         it 'should have a salesvolume of standard_salesvolume if not verified' do
           private_seller.verified = false
-          private_seller.max_value_of_goods_cents.must_equal PRIVATE_SELLER_CONSTANTS['standard_salesvolume']
+          value(private_seller.max_value_of_goods_cents).must_equal PRIVATE_SELLER_CONSTANTS['standard_salesvolume']
         end
 
         it 'should have a salesvolume of standard_salesvolume + verified_bonus if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus'])
+          value(private_seller.max_value_of_goods_cents).must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus'])
         end
 
         it 'should have a salesvolume of standard_salesvolume + verified_bonus if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus'])
+          value(private_seller.max_value_of_goods_cents).must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus'])
         end
       end # /standard seller
 
@@ -634,25 +634,25 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should have a salesvolume of standard_salesvolume * good_factor if not verified' do
           private_seller.verified = false
-          private_seller.max_value_of_goods_cents.must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] * PRIVATE_SELLER_CONSTANTS['good_factor'])
+          value(private_seller.max_value_of_goods_cents).must_equal(PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] * PRIVATE_SELLER_CONSTANTS['good_factor'])
         end
 
         it 'should have a salesvolume of (standard_salesvolume + verified_bonus ) * good_factor if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal((PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus']) * PRIVATE_SELLER_CONSTANTS['good_factor'])
+          value(private_seller.max_value_of_goods_cents).must_equal((PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus']) * PRIVATE_SELLER_CONSTANTS['good_factor'])
         end
 
         it 'should have a salesvolume of (standard_salesvolume + verified_bonus ) * good_factor if verified' do
           private_seller.verified = true
-          private_seller.max_value_of_goods_cents.must_equal((PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus']) * PRIVATE_SELLER_CONSTANTS['good_factor'])
+          value(private_seller.max_value_of_goods_cents).must_equal((PRIVATE_SELLER_CONSTANTS['standard_salesvolume'] + PRIVATE_SELLER_CONSTANTS['verified_bonus']) * PRIVATE_SELLER_CONSTANTS['good_factor'])
         end
       end # /good seller
 
       it 'should have valid private_seller_constants' do
-        private_seller.private_seller_constants[:standard_salesvolume].must_equal PRIVATE_SELLER_CONSTANTS['standard_salesvolume']
-        private_seller.private_seller_constants[:verified_bonus].must_equal PRIVATE_SELLER_CONSTANTS['verified_bonus']
-        private_seller.private_seller_constants[:good_factor].must_equal PRIVATE_SELLER_CONSTANTS['good_factor']
-        private_seller.private_seller_constants[:bad_salesvolume].must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
+        value(private_seller.private_seller_constants[:standard_salesvolume]).must_equal PRIVATE_SELLER_CONSTANTS['standard_salesvolume']
+        value(private_seller.private_seller_constants[:verified_bonus]).must_equal PRIVATE_SELLER_CONSTANTS['verified_bonus']
+        value(private_seller.private_seller_constants[:good_factor]).must_equal PRIVATE_SELLER_CONSTANTS['good_factor']
+        value(private_seller.private_seller_constants[:bad_salesvolume]).must_equal PRIVATE_SELLER_CONSTANTS['bad_salesvolume']
       end
     end
 
@@ -667,17 +667,17 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become standard seller' do
           commercial_seller.rate_up
-          commercial_seller.standard_seller?.must_equal true
+          value(commercial_seller.standard_seller?).must_equal true
         end
 
         it 'should have a salesvolume of bad_salesvolume if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
         end
 
         it 'should have a salesvolume of bad_salesvolume if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
         end
       end # /bad seller
 
@@ -688,17 +688,17 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become good1 seller' do
           commercial_seller.rate_up
-          commercial_seller.good1_seller?.must_equal true
+          value(commercial_seller.good1_seller?).must_equal true
         end
 
         it 'should have a salesvolume of standard_salesvolume if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume']
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume']
         end
 
         it 'should have a salesvolume of standard_salesvolume + verified_bonus if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal(COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus'])
+          value(commercial_seller.max_value_of_goods_cents).must_equal(COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus'])
         end
       end # /standard seller
 
@@ -709,17 +709,17 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become good2 seller' do
           commercial_seller.rate_up
-          commercial_seller.good2_seller?.must_equal true
+          value(commercial_seller.good2_seller?).must_equal true
         end
 
         it 'should have a salesvolume of standard_salesvolume * good_factor if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * COMMERCIAL_SELLER_CONSTANTS['good_factor']
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * COMMERCIAL_SELLER_CONSTANTS['good_factor']
         end
 
         it 'should have a salesvolume of ( standard_salesvolume + verified_bonus ) * good_factor if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * COMMERCIAL_SELLER_CONSTANTS['good_factor'])
+          value(commercial_seller.max_value_of_goods_cents).must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * COMMERCIAL_SELLER_CONSTANTS['good_factor'])
         end
       end # /good1 seller
 
@@ -730,17 +730,17 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should be able to rate to good3 seller' do
           commercial_seller.rate_up
-          commercial_seller.good3_seller?.must_equal true
+          value(commercial_seller.good3_seller?).must_equal true
         end
 
         it 'should have a salesvolume of standard_salesvolume * good_factor^2 if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**2)
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**2)
         end
 
         it 'should have a salesvolume of ( standard_salesvolume + verified_bonus ) * good_factor^2 if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**2))
+          value(commercial_seller.max_value_of_goods_cents).must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**2))
         end
       end # /good2 seller
 
@@ -751,17 +751,17 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should become good4 seller' do
           commercial_seller.rate_up
-          commercial_seller.good4_seller?.must_equal true
+          value(commercial_seller.good4_seller?).must_equal true
         end
 
         it 'should have a salesvolume of standard_salesvolume * good_factor^3 if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**3)
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**3)
         end
 
         it 'should have a salesvolume of ( standard_salesvolume + verified_bonus ) * good_factor^3 if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**3))
+          value(commercial_seller.max_value_of_goods_cents).must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**3))
         end
       end # /good3 seller
 
@@ -772,20 +772,20 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should have a salesvolume of standard_salesvolume * good_factor^4 if not verified' do
           commercial_seller.verified = false
-          commercial_seller.max_value_of_goods_cents.must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**4)
+          value(commercial_seller.max_value_of_goods_cents).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**4)
         end
 
         it 'should have a salesvolume of ( standard_salesvolume + verified_bonus ) * good_factor^4 if verified' do
           commercial_seller.verified = true
-          commercial_seller.max_value_of_goods_cents.must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**4))
+          value(commercial_seller.max_value_of_goods_cents).must_equal((COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume'] + COMMERCIAL_SELLER_CONSTANTS['verified_bonus']) * (COMMERCIAL_SELLER_CONSTANTS['good_factor']**4))
         end
       end # /good4 seller
 
       it 'should have valid commercial_seller_constants' do
-        commercial_seller.commercial_seller_constants[:standard_salesvolume].must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume']
-        commercial_seller.commercial_seller_constants[:verified_bonus].must_equal COMMERCIAL_SELLER_CONSTANTS['verified_bonus']
-        commercial_seller.commercial_seller_constants[:good_factor].must_equal COMMERCIAL_SELLER_CONSTANTS['good_factor']
-        commercial_seller.commercial_seller_constants[:bad_salesvolume].must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
+        value(commercial_seller.commercial_seller_constants[:standard_salesvolume]).must_equal COMMERCIAL_SELLER_CONSTANTS['standard_salesvolume']
+        value(commercial_seller.commercial_seller_constants[:verified_bonus]).must_equal COMMERCIAL_SELLER_CONSTANTS['verified_bonus']
+        value(commercial_seller.commercial_seller_constants[:good_factor]).must_equal COMMERCIAL_SELLER_CONSTANTS['good_factor']
+        value(commercial_seller.commercial_seller_constants[:bad_salesvolume]).must_equal COMMERCIAL_SELLER_CONSTANTS['bad_salesvolume']
       end
     end
   end # /seller states
@@ -798,7 +798,7 @@ class UserTest < ActiveSupport::TestCase
 
       it 'should become standard buyer' do
         user.rate_up_buyer
-        user.standard_buyer?.must_equal true
+        value(user.standard_buyer?).must_equal true
       end
     end
 
@@ -809,12 +809,12 @@ class UserTest < ActiveSupport::TestCase
 
       it 'should become bad buyer' do
         user.rate_down_to_bad_buyer
-        user.bad_buyer?.must_equal true
+        value(user.bad_buyer?).must_equal true
       end
 
       it 'should become good buyer' do
         user.rate_up_buyer
-        user.good_buyer?.must_equal true
+        value(user.good_buyer?).must_equal true
       end
     end
 
@@ -825,15 +825,15 @@ class UserTest < ActiveSupport::TestCase
 
       it 'should become bad buyer' do
         user.rate_down_to_bad_buyer
-        user.bad_buyer?.must_equal true
+        value(user.bad_buyer?).must_equal true
       end
     end
 
     it 'should have valid buyer_constants' do
-      user.buyer_constants[:not_registered_purchasevolume].must_equal 4
-      user.buyer_constants[:standard_purchasevolume].must_equal 12
-      user.buyer_constants[:bad_purchasevolume].must_equal 6
-      user.buyer_constants[:good_factor].must_equal 2
+      value(user.buyer_constants[:not_registered_purchasevolume]).must_equal 4
+      value(user.buyer_constants[:standard_purchasevolume]).must_equal 12
+      value(user.buyer_constants[:bad_purchasevolume]).must_equal 6
+      value(user.buyer_constants[:good_factor]).must_equal 2
     end
   end # /buyer states
 
@@ -851,22 +851,22 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should change percentage of negative ratings' do
           private_seller.update_rating_counter
-          private_seller.percentage_of_negative_ratings.must_equal 30.0
+          value(private_seller.percentage_of_negative_ratings).must_equal 30.0
         end
         it 'should change from good to bad seller' do
           private_seller.seller_state = 'good_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'bad_seller'
+          value(private_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should change from standard to bad seller' do
           private_seller.seller_state = 'standard_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'bad_seller'
+          value(private_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should stay bad seller' do
           private_seller.seller_state = 'bad_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'bad_seller'
+          value(private_seller.seller_state).must_equal 'bad_seller'
         end
       end
 
@@ -880,7 +880,7 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should mark the user as banned' do
           private_seller.update_rating_counter
-          private_seller.banned.must_equal true
+          value(private_seller.banned).must_equal true
         end
       end
 
@@ -894,22 +894,22 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should change percentage of positive ratings' do
           private_seller.update_rating_counter
-          private_seller.percentage_of_positive_ratings.must_equal 80.0
+          value(private_seller.percentage_of_positive_ratings).must_equal 80.0
         end
         it 'should stay good seller' do
           private_seller.seller_state = 'good_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'good_seller'
+          value(private_seller.seller_state).must_equal 'good_seller'
         end
         it 'should stay standard seller' do
           private_seller.seller_state = 'standard_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'standard_seller'
+          value(private_seller.seller_state).must_equal 'standard_seller'
         end
         it 'should change from bad to standard seller' do
           private_seller.seller_state = 'bad_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'standard_seller'
+          value(private_seller.seller_state).must_equal 'standard_seller'
         end
       end
 
@@ -924,17 +924,17 @@ class UserTest < ActiveSupport::TestCase
         it 'should stay good seller' do
           private_seller.seller_state = 'good_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'good_seller'
+          value(private_seller.seller_state).must_equal 'good_seller'
         end
         it 'should change from standard to good seller' do
           private_seller.seller_state = 'standard_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'good_seller'
+          value(private_seller.seller_state).must_equal 'good_seller'
         end
         it 'should change from bad_seller to standard_seller' do
           private_seller.seller_state = 'bad_seller'
           private_seller.update_rating_counter
-          private_seller.seller_state.must_equal 'standard_seller'
+          value(private_seller.seller_state).must_equal 'standard_seller'
         end
       end
     end
@@ -953,32 +953,32 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from good1 to bad seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should change from good2 to bad seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should change from good3 to bad seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should change from good4 to bad seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should change from standard to bad seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
         it 'should stay bad seller' do
           commercial_seller.seller_state = 'bad_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'bad_seller'
+          value(commercial_seller.seller_state).must_equal 'bad_seller'
         end
       end
 
@@ -992,7 +992,7 @@ class UserTest < ActiveSupport::TestCase
 
         it 'should mark the user as banned' do
           commercial_seller.update_rating_counter
-          commercial_seller.banned.must_equal true
+          value(commercial_seller.banned).must_equal true
         end
       end
 
@@ -1007,32 +1007,32 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from bad to standard seller' do
           commercial_seller.seller_state = 'bad_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'standard_seller'
+          value(commercial_seller.seller_state).must_equal 'standard_seller'
         end
         it 'should stay standard seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'standard_seller'
+          value(commercial_seller.seller_state).must_equal 'standard_seller'
         end
         it 'should stay good1 seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should stay good2 seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should stay good3 seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should stay good4 seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
       end
 
@@ -1048,27 +1048,27 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from standard to good1 seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should stay good1 seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should stay good2 seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should stay good3 seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should stay good4 seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
       end
 
@@ -1086,27 +1086,27 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from standard_seller to good1 seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should change from good1 to good2 seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should stay good2 seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should stay good3 seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should stay good4 seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
       end
 
@@ -1124,27 +1124,27 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from standard_seller to good1 seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should change from good1 to good2 seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should change from good2 to good3 seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should stay good3 seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should stay good4 seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
       end
 
@@ -1162,27 +1162,27 @@ class UserTest < ActiveSupport::TestCase
         it 'should change from standard_seller to good1 seller' do
           commercial_seller.seller_state = 'standard_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good1_seller'
+          value(commercial_seller.seller_state).must_equal 'good1_seller'
         end
         it 'should change from good1 to good2 seller' do
           commercial_seller.seller_state = 'good1_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good2_seller'
+          value(commercial_seller.seller_state).must_equal 'good2_seller'
         end
         it 'should change from good2 to good3 seller' do
           commercial_seller.seller_state = 'good2_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good3_seller'
+          value(commercial_seller.seller_state).must_equal 'good3_seller'
         end
         it 'should change from good3 to good4 seller' do
           commercial_seller.seller_state = 'good3_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
         it 'should stay good4 seller' do
           commercial_seller.seller_state = 'good4_seller'
           commercial_seller.update_rating_counter
-          commercial_seller.seller_state.must_equal 'good4_seller'
+          value(commercial_seller.seller_state).must_equal 'good4_seller'
         end
       end
     end

@@ -10,11 +10,11 @@ class WelcomeHelperTest < ActionView::TestCase
       content = "<p><img src=\"test.png\"/>"
       result = ' <img src="test.png"> '
       additional = ' test test'
-      helper.rss_image_extractor(content + additional).must_equal result
+      value(helper.rss_image_extractor(content + additional)).must_equal result
     end
     it 'returns empty string with no image present' do
       content = '<p> testt test</p>'
-      helper.rss_image_extractor(content).must_equal ''
+      value(helper.rss_image_extractor(content)).must_equal ''
     end
   end
 

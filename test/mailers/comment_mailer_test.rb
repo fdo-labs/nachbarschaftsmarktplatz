@@ -18,11 +18,11 @@ class CommentMailerTest < ActiveSupport::TestCase
 
     assert_not ActionMailer::Base.deliveries.empty?
 
-    mail.must have_subject(I18n.t('comment.mailer.notification_title'))
-    mail.must have_body_text comment.commentable.name
-    mail.must have_body_text library_url(comment.commentable)
-    mail.must have_body_text commentable_owner.nickname
+    expect(mail).must have_subject(I18n.t('comment.mailer.notification_title'))
+    expect(mail).must have_body_text comment.commentable.name
+    expect(mail).must have_body_text library_url(comment.commentable)
+    expect(mail).must have_body_text commentable_owner.nickname
 
-    mail.must deliver_to commentable_owner.email
+    expect(mail).must deliver_to commentable_owner.email
   end
 end

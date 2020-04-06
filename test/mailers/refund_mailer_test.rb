@@ -12,10 +12,10 @@ class RefundMailerTest < ActiveSupport::TestCase
   it '#refund_notification' do
     refund = create :refund, reason: 'not_in_stock'
     mail =  RefundMailer.refund_notification(refund)
-    mail.must deliver_to('storno@fairmondo.de')
-    mail.must have_subject('[Nachbarschaftsmarktplatz] Rueckerstattung: Transationsnummer: ' + "#{refund.business_transaction.id}")
-    mail.must have_body_text(refund.business_transaction.id.to_s)
-    mail.must have_body_text(refund.reason)
-    mail.must have_body_text(refund.description)
+    expect(mail).must deliver_to('storno@fairmondo.de')
+    expect(mail).must have_subject('[Nachbarschaftsmarktplatz] Rueckerstattung: Transationsnummer: ' + "#{refund.business_transaction.id}")
+    expect(mail).must have_body_text(refund.business_transaction.id.to_s)
+    expect(mail).must have_body_text(refund.reason)
+    expect(mail).must have_body_text(refund.description)
   end
 end

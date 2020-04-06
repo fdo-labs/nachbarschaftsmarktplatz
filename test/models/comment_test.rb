@@ -34,7 +34,7 @@ class CommentTest < ActiveSupport::TestCase
     let(:comment) { create(:comment) }
 
     it 'should return the owner of the commentable' do
-      comment.commentable_user.must_equal(comment.commentable.user)
+      value(comment.commentable_user).must_equal(comment.commentable.user)
     end
   end
 end

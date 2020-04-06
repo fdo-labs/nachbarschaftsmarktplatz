@@ -61,7 +61,7 @@ class FeedbackTest < ActiveSupport::TestCase
         user = create :user
         f = Feedback.new
         f.put_user_id user
-        f.user_id.must_equal user.id
+        value(f.user_id).must_equal user.id
       end
 
       it 'should not set the user_id when signed out' do

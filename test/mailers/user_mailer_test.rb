@@ -17,12 +17,12 @@ class UserMailerTest < ActiveSupport::TestCase
   it '#contact' do
     mail = UserMailer.contact(sender: sender, resource_id: receiver.id, text: text)
 
-    mail.must deliver_to receiver.email
-    mail.subject.must_equal('[Nachbarschaftsmarktplatz] ein/e Nutzer*in hat eine Frage an Dich')
-    mail.must have_body_text sender.nickname
-    mail.must have_body_text user_url sender.id
-    mail.must have_body_text sender.email
-    mail.must have_body_text ' hat Dir eine Frage gestellt:'
-    mail.must have_body_text text
+    expect(mail).must deliver_to receiver.email
+    value(mail.subject).must_equal('[Nachbarschaftsmarktplatz] ein/e Nutzer*in hat eine Frage an Dich')
+    expect(mail).must have_body_text sender.nickname
+    expect(mail).must have_body_text user_url sender.id
+    expect(mail).must have_body_text sender.email
+    expect(mail).must have_body_text ' hat Dir eine Frage gestellt:'
+    expect(mail).must have_body_text text
   end
 end

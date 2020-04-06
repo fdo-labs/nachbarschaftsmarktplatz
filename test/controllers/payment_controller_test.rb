@@ -21,7 +21,7 @@ class PaymentsControllerTest < ActionController::TestCase
         assert_difference 'Payment.count', 1 do
           post :create, params: { line_item_group_id: lig.id, payment: { type: 'PaypalPayment' } }
         end
-        lig.paypal_payment.pay_key.must_be_kind_of String
+        expect(lig.paypal_payment.pay_key).must_be_kind_of String
         assert_redirected_to 'https://www.sandbox.paypal.com/de/webscr?cmd=_ap-payment&paykey=foobar'
       end
 
@@ -31,7 +31,7 @@ class PaymentsControllerTest < ActionController::TestCase
         assert_difference 'Payment.count', 1 do
           post :create, params: { line_item_group_id: lig.id, payment: { type: 'PaypalPayment' } }
         end
-        flash[:error].must_equal I18n.t('PaypalPayment.controller_error', email: lig.seller_paypal_account)
+        value(flash[:error]).must_equal I18n.t('PaypalPayment.controller_error', email: lig.seller_paypal_account)
       end
     end
 
@@ -67,7 +67,7 @@ class PaymentsControllerTest < ActionController::TestCase
     it 'should confirm payment when request contains "complete"' do
       payment
       post :ipn_notification, params: { pay_key: '1234', status: 'COMPLETED' }
-      payment.reload.state.must_equal 'confirmed'
+      value(payment.reload.state).must_equal 'confirmed'
     end
 
     # TODO find out why this test passes and coverall thinks corresponding line is not touched
@@ -83,7 +83,7 @@ class PaymentsControllerTest < ActionController::TestCase
     it 'should throw an error, when payment_status is "Invalid"' do
       payment
       post :ipn_notification, params: { pay_key: '1234', status: 'Invalid' }
-      payment.reload.state.must_equal 'errored'
+      value(payment.reload.state).must_equal 'errored'
     end
 
     it 'should throw ActiveRecord::RecordNotFound if no payment is found' do
