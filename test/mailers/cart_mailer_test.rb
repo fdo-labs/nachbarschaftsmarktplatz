@@ -55,7 +55,7 @@ class CartMailerTest < ActiveSupport::TestCase
     mail.must have_body_text(business_transaction.article_title)
 
     # Seller information
-    mail.must have_subject('[Fairmondo] Artikel ausliefern')
+    mail.must have_subject('[Nachbarschaftsmarktplatz] Artikel ausliefern')
     mail.must have_body_text(seller.fullname)
     mail.must have_body_text(seller.standard_address_first_name)
     mail.must have_body_text(seller.standard_address_last_name)
@@ -103,7 +103,7 @@ class CartMailerTest < ActiveSupport::TestCase
       mail = CartMailer.send_cart(cart.id, addr)
 
       mail.must deliver_to(addr)
-      mail.must have_subject('[Fairmondo] Deine vorgemerkten Artikel auf Fairmondo')
+      mail.must have_subject('[Nachbarschaftsmarktplatz] Deine vorgemerkten Artikel auf dem Nachbarschaftsmarktplatz')
     end
   end
 end

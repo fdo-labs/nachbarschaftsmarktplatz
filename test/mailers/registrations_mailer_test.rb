@@ -13,9 +13,12 @@ class RegistrationsMailerTest < ActiveSupport::TestCase
   it '#voluntary_contribution_email with amount of 3' do
     mail = RegistrationsMailer.voluntary_contribution_email(email, 3)
     mail.must deliver_to email
-    mail.subject.must_equal('Dein freiwilliger Grundbeitrag für Fairmondo')
-    mail.must have_body_text 'vielen Dank für Deine Bereitschaft, die Weiterentwicklung von '\
-      'Fairmondo zu unterstützen!'
+    mail.subject.must_equal('Dein freiwilliger Grundbeitrag für den Nachbarschaftsmarktplatz')
+    mail.must have_body_text 'Liebe neue Nutzerin, lieber neuer Nutzer, 
+    vielen Dank für Deine Bereitschaft, die Weiterentwicklung des Nachbarschaftsmarktplatz zu unterstützen! Bitte schließe den Prozess 
+    auf der Seite unseres Partners Fastbill ab: https://automatic.fastbill.com/purchase/7f1d4c9a3c8e6ec21543fde6377132d6/25-1 
+    Dein freiwilliger Grundbeitrag wird stets zum ersten des Monats gebucht. Er ist jederzeit kündbar. 
+    Mit besten Grüßen, Dein Nachbarschaftsmarktplatz-Team '
     mail.must have_body_text 'https://automatic.fastbill.com/purchase/7f1d4c9a3c8e6ec21543fde6377132d6/25-1'
   end
 
