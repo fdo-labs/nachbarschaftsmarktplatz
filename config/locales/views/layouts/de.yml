@@ -22,7 +22,7 @@ de:
           buy: "Kaufen"
           sell: "Verkaufen"
           affiliate: "Partnerprogramm"
-          fairmondo_shop: "Fairmondo-Shop"
+          fairmondo_shop: "Nachbarschaftsmarktplatz-Shop"
           categories: "Kategorien"
         subscription:
           heading: Runde-Sache-Abo
@@ -69,7 +69,7 @@ de:
       header_nav:
         about_us:
           title: 'Über uns'
-          fairmondo: 'Fairmondo'
+          fairmondo: 'Nachbarschaftsmarktplatz'
           marketplace: 'Über den Marktplatz'
           coop: 'Genossenschaft'
           jobs: 'Jobs'
