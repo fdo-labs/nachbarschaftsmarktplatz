@@ -29,11 +29,11 @@ nav id="l-header-mnav" class="l-header-mnav" role="navigation"
     - if current_cart && policy(current_cart).show?(cookies.signed[:cart])\
         && !current_cart.line_items.empty?
       li.l-header-mnav-menu-item
-        = link_to t('.cart.title', count: current_cart.line_item_count),
+        = link_to t('.cart.title_html', count: current_cart.line_item_count),
                   current_cart, data: navigation_push
     - else
       li.l-header-mnav-menu-item
-        = link_to t('.cart.title', count: 0),
+        = link_to t('.cart.title_html', count: 0),
                   empty_cart_path, data: navigation_push
 
     / Admin
@@ -108,17 +108,6 @@ nav.l-header-nav
           = render 'devise/sessions/shared'
           = render 'devise/links'
 
-    / Cart
-    - if current_cart && policy(current_cart).show?(cookies.signed[:cart])\
-        && !current_cart.line_items.empty?
-      li
-        = link_to t('.cart.title', count: current_cart.line_item_count),
-                  current_cart, data: navigation_push
-    - else
-      li
-        = link_to t('.cart.title', count: 0), empty_cart_path,
-                  data: navigation_push
-
     / Admin
     - if User.is_admin? current_user
       li.TouchHover
@@ -136,3 +125,16 @@ nav.l-header-nav
     / About us
     li.TouchHover
       = link_to t('.about_us.title'), '/ueber_uns'
+
+    / Cart
+    - if current_cart && policy(current_cart).show?(cookies.signed[:cart])\
+        && !current_cart.line_items.empty?
+      li
+        button.Button 
+          = link_to t('.cart.title_html', count: current_cart.line_item_count),
+                  current_cart, data: navigation_push
+    - else
+      li
+        button.Button 
+          = link_to t('.cart.title_html', count: 0), empty_cart_path,
+                  data: navigation_push

@@ -88,7 +88,7 @@ de:
           myarticles: 'Meine Artikel'
           mylibraries: 'Meine Sammlungen'
         cart:
-          title: "Warenkorb (%{count})"
+          title_html: "<b>Warenkorb (%{count})</b>"
         admin:
           title: "Admin"
           backend: "Backend"
