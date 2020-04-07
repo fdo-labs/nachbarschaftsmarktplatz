@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    params[:page] = [Kaminari.config.max_pages,params[:page].to_i].min
     @articles = @search_cache.search params[:page]
     respond_with @articles
   end

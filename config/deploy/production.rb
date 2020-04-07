@@ -7,4 +7,4 @@ set :deploy_to, '/home/deploy/nama/'
 
 server '78.47.131.16', user: 'deploy', roles: %w{web app db sidekiq console}
 
-set :branch, ENV['BRANCH_NAME'] || 'develop'
+set :branch, ENV['BRANCH_NAME'] || 'master'
