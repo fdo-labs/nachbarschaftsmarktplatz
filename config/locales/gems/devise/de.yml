@@ -26,7 +26,7 @@ de:
       send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
       send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit einer Anleitung, wie Du Dein Profil bestätigen kannst.'
       confirmed: >
-        Wir begrüßen Dich herzlich auf dem Nachbarschaftsmarktplatz, dem fairen Online-Marktplatz in Hand der Nutzer*innen! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
+        Wir begrüßen Dich herzlich auf dem Nachbarschaftsmarktplatz, dem Online-Marktplatz für Geschäfte in Deiner Nähe! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
         Diese kannst Du in Deinem Profil eintragen.
     registrations:
       edit:
@@ -61,8 +61,8 @@ de:
     confirmation:
       resend: "Registrierungs-E-Mail erneut schicken"
       text: >
-        Vielen Dank für Deine Registrierung auf dem Nachbarschaftsmarktplatz, dem fairen Online-Marktplatz in Hand der Nutzer*innen!
-        Durch Deine Registrierung hast Du Dich bereit erklärt, die angehängten AGB und die Datenschutzerklärung vom Nachbarschaftsmarktplatz zu akzeptieren.
+        Vielen Dank für Deine Registrierung auf dem Nachbarschaftsmarktplatz, dem Online-Marktplatz für Geschäfte in Deiner Nähe!
+        Durch Deine Registrierung hast Du Dich bereit erklärt, die angehängten AGB und die Datenschutzerklärung des Nachbarschaftsmarktplatz zu akzeptieren.
         Bitte bestätige Deine E-Mail-Adresse sowie den Erhalt und die Lesbarkeit der beigefügten AGB und Datenschutzbestimmungen um den Registrierungsvorgang abzuschließen.
         Für die Bestätigung der Registrierung gehe bitte auf den folgenden Link:
       link: "Meine Registrierung sowie den Erhalt und die Lesbarkeit der AGB und Datenschutzbestimmungen bestätigen."
