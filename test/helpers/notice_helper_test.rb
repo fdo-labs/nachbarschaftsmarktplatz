@@ -22,19 +22,19 @@ class NoticeHelperTest < ActionView::TestCase
 
   describe '#main_notice_mapper' do
     it "returns 'error' when given 'alert'" do
-      helper.main_notice_mapper('alert').must_equal 'error'
+      value(helper.main_notice_mapper('alert')).must_equal 'error'
     end
     it "returns 'error' when given 'error'" do
-      helper.main_notice_mapper('error').must_equal 'error'
+      value(helper.main_notice_mapper('error')).must_equal 'error'
     end
     it "returns 'info' when given 'notice'" do
-      helper.main_notice_mapper('notice').must_equal 'info'
+      value(helper.main_notice_mapper('notice')).must_equal 'info'
     end
     it "returns 'info confirmation' when given 'confirm'" do
-      helper.main_notice_mapper('confirm').must_equal 'confirmation'
+      value(helper.main_notice_mapper('confirm')).must_equal 'confirmation'
     end
     it "returns 'info' when given anything else" do
-      helper.main_notice_mapper('thisstringdoesntexist').must_equal 'info'
+      value(helper.main_notice_mapper('thisstringdoesntexist')).must_equal 'info'
     end
   end
 

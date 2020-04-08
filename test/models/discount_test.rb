@@ -31,8 +31,8 @@ class DiscountTest < ActiveSupport::TestCase
         business_transaction = create :business_transaction, article: create(:article, discount: discount)
         business_transaction.article.calculate_fees_and_donations
         Discount.discount_chain(business_transaction)
-        business_transaction.discount_id.must_equal discount.id
-        business_transaction.discount_value_cents.must_equal discount.max_discounted_value_cents
+        value(business_transaction.discount_id).must_equal discount.id
+        value(business_transaction.discount_value_cents).must_equal discount.max_discounted_value_cents
       end
 
       it 'should set discount value to the calculated discount if calculated discount is smaller than remaining discount' do
@@ -40,8 +40,8 @@ class DiscountTest < ActiveSupport::TestCase
         business_transaction = create :business_transaction, article: create(:article, discount: discount, price: 1)
         business_transaction.article.calculate_fees_and_donations
         Discount.discount_chain(business_transaction)
-        business_transaction.discount_id.must_equal discount.id
-        business_transaction.discount_value_cents.must_equal 10 # minimum discount
+        value(business_transaction.discount_id).must_equal discount.id
+        value(business_transaction.discount_value_cents).must_equal 10 # minimum discount
       end
     end
   end

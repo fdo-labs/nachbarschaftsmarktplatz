@@ -57,7 +57,7 @@ class AddressesControllerTest < ActionController::TestCase
       assert_no_difference('Address.count') do
         patch :update, params: { user_id: user.id, id: update_address.id, address: @address_attrs }, xhr: true
       end
-      update_address.reload.first_name.must_equal 'test update'
+      value(update_address.reload.first_name).must_equal 'test update'
     end
 
     it 'should render edit on empty names' do
@@ -84,8 +84,8 @@ class AddressesControllerTest < ActionController::TestCase
       assert_difference('Address.count', 1) do
         patch :update, params: { user_id: user.id, id: referenced_address.id, address: @address_attrs }, xhr: true
       end
-      referenced_address.reload.first_name.must_equal fist_name_referenced
-      user.addresses.last.first_name.must_equal 'test update'
+      value(referenced_address.reload.first_name).must_equal fist_name_referenced
+      value(user.addresses.last.first_name).must_equal 'test update'
     end
   end
 
@@ -107,7 +107,7 @@ class AddressesControllerTest < ActionController::TestCase
       assert_difference('Address.count', 0) do
         delete :destroy, params: { user_id: referenced_address.user.id, id: referenced_address.id }, xhr: true
       end
-      referenced_address.reload.stashed?.must_equal true
+      value(referenced_address.reload.stashed?).must_equal true
     end
   end
 end

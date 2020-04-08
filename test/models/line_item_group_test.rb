@@ -10,7 +10,7 @@ class LineItemGroupTest < ActiveSupport::TestCase
   subject { LineItemGroup.new }
 
   it 'has a valid Factory' do
-    line_item_group.must_be :valid?
+    _(line_item_group).must_be :valid?
   end
 
   describe 'attributes' do
@@ -35,7 +35,7 @@ class LineItemGroupTest < ActiveSupport::TestCase
     it 'generates a valid id' do
       line_item_group.id = 1
       line_item_group.generate_purchase_id
-      line_item_group.purchase_id.must_equal('F00000001')
+      value(line_item_group.purchase_id).must_equal('F00000001')
     end
   end
 end

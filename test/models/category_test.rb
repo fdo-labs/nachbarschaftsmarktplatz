@@ -26,7 +26,7 @@ class CategoryTest < ActiveSupport::TestCase
   let(:parent_category) { child_category.parent }
 
   it 'has a valid Factory' do
-    category.valid?.must_equal true
+    value(category.valid?).must_equal true
   end
 
   describe 'associations' do
@@ -37,12 +37,12 @@ class CategoryTest < ActiveSupport::TestCase
     describe '#parent' do
       it 'should have the correct parent_id' do
         @another_category = create(:category, parent: category)
-        @another_category.parent.must_equal category
+        value(@another_category.parent).must_equal category
       end
 
       it 'should not have a parent_id without a parent' do
         @another_category = create(:category)
-        @another_category.parent.wont_equal category
+        value(@another_category.parent).wont_equal category
       end
     end
 

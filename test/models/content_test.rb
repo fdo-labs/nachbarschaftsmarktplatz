@@ -20,7 +20,7 @@ class ContentTest < ActiveSupport::TestCase
       # see https://github.com/norman/friendly_id/issues/332
       it 'find by slug should work' do
         content = create :content
-        Content.find(content.key).must_equal content
+        value(Content.find(content.key)).must_equal content
       end
     end
   end

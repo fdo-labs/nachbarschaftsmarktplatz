@@ -21,7 +21,7 @@ class FairtasticTest < ActiveSupport::TestCase
           end
         )
 
-        @buffer.output.must_match(/fieldset class="bar foo-step-inputs/)
+        value(@buffer.output).must_match(/fieldset class="bar foo-step-inputs/)
       end
     end
   end

@@ -36,9 +36,10 @@ de:
       newsletter: "Ich möchte den monatlichen Newsletter mit allgmeinen Neuigkeiten und Ankündigungen erhalten (jederzeit abbestellbar)."
     aside:
       heading: "Darum solltest Du Dich jetzt registrieren:"
-      bullet1: "Die schönsten und fairsten Produkte im Netz entdecken"
-      bullet2: "Fördere sozialen und ressourcenschonenden Konsum"
-      bullet3: "Mit Käufen & Verkäufen einfach Hilfsprojekte unterstützen"
+      bullet1: "Online einkaufen bei deinen Lieblingsläden in der Nachbarschaft"
+      bullet2: "Fördere lokalen und sozialen Konsum"
+      bullet3: "Du kannst deine Bestellung flexibel selbst abholen oder zu dir nach Hause liefern lassen"
+      bullet4: "Unterstütze den lokalen Einzelhandel in der Corona-Krise"
     visibility:
       public: "Öffentlich"
       private: "Privat"

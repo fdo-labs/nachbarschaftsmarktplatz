@@ -31,15 +31,15 @@ class PaymentTest < ActiveSupport::TestCase
   describe 'methods' do
     describe '#init [state machine]' do
       it 'should initialize successfully' do
-        payment.state.must_equal 'pending'
+        value(payment.state).must_equal 'pending'
         payment.init
-        payment.state.must_equal 'initialized'
+        value(payment.state).must_equal 'initialized'
       end
     end
 
     describe '#initialize_payment [private, called within init]' do
       it 'should return true for a base Payment' do
-        Payment.new.send(:initialize_payment).must_equal true
+        value(Payment.new.send(:initialize_payment)).must_equal true
       end
 
       it 'should save errors on API failure' do
@@ -51,7 +51,7 @@ class PaymentTest < ActiveSupport::TestCase
       it 'should rescue a timeout and error instead' do
         Timeout.expects(:timeout).with(15).raises(Timeout::Error)
         payment.init
-        payment.state.must_equal 'errored'
+        value(payment.state).must_equal 'errored'
       end
     end
   end

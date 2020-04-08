@@ -17,7 +17,7 @@ class LineItemsControllerTest < ActionController::TestCase
           assert_difference 'Cart.count', 1 do
             post :create, params:{ line_item: { article_id: article.id } }
           end
-          cookies.signed[:cart].must_equal Cart.last.id
+          value(cookies.signed[:cart]).must_equal Cart.last.id
         end
       end
 
@@ -26,7 +26,7 @@ class LineItemsControllerTest < ActionController::TestCase
           create :cart # distraction cart
           cookies.signed[:cart] = cart.id
           post :create, params:{ line_item: { article_id: article.id } }
-          cart.reload.line_items.map(&:article).must_include article
+          expect(cart.reload.line_items.map(&:article)).must_include article
         end
 
         it 'should not add the current item to the cart if that cart has a user_id' do
@@ -34,7 +34,7 @@ class LineItemsControllerTest < ActionController::TestCase
           cookies.signed[:cart] = cart.id
           post :create, params:{ line_item: { article_id: article.id } }
 
-          cart.reload.line_items.map(&:article).must_include article
+          expect(cart.reload.line_items.map(&:article)).must_include article
         end
       end
     end
@@ -47,14 +47,14 @@ class LineItemsControllerTest < ActionController::TestCase
           assert_difference 'Cart.count', 1 do
             post :create, params:{ line_item: { article_id: article.id } }
           end
-          cookies.signed[:cart].must_equal Cart.last.id
-          Cart.last.user.must_equal buyer
+          value(cookies.signed[:cart]).must_equal Cart.last.id
+          value(Cart.last.user).must_equal buyer
         end
 
         it 'should use the old cart if there is an existing cart' do
           post :create, params:{ line_item: { article_id: article.id } }
-          Cart.last.line_items.map(&:article).must_include article
-          cookies.signed[:cart].must_equal Cart.last.id
+          expect(Cart.last.line_items.map(&:article)).must_include article
+          value(cookies.signed[:cart]).must_equal Cart.last.id
         end
       end
     end
@@ -62,20 +62,20 @@ class LineItemsControllerTest < ActionController::TestCase
 
   describe "PATCH 'update'" do
     it 'should update a given line_item' do
-      line_item.reload.requested_quantity.must_equal 1
+      value(line_item.reload.requested_quantity).must_equal 1
       cookies.signed[:cart] = line_item.cart.id
       patch :update, params:{ id: line_item.id, line_item: { requested_quantity: 2 } }
-      line_item.reload.requested_quantity.must_equal 2
+      value(line_item.reload.requested_quantity).must_equal 2
     end
     it 'should throw errors when requesting to much' do
-      line_item.reload.requested_quantity.must_equal 1
+      value(line_item.reload.requested_quantity).must_equal 1
       cookies.signed[:cart] = line_item.cart.id
       patch :update, params:{ id: line_item.id, line_item: { requested_quantity: (article.quantity_available + 1)  } }
-      line_item.reload.requested_quantity.must_equal 1
-      flash[:error].must_equal I18n.t('line_item.notices.error_quantity')
+      value(line_item.reload.requested_quantity).must_equal 1
+      expect(flash[:error]).must_equal I18n.t('line_item.notices.error_quantity')
     end
     it 'should call destroy if quantity is 0' do
-      line_item.reload.requested_quantity.must_equal 1
+      value(line_item.reload.requested_quantity).must_equal 1
       cookies.signed[:cart] = line_item.cart.id
       assert_difference 'LineItem.count', -1 do
         patch :update, params:{ id: line_item.id, line_item: { requested_quantity: 0  } }
