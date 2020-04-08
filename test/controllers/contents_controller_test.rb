@@ -17,20 +17,20 @@ class ContentsControllerTest < ActionController::TestCase
       content
       login_admin
       get :index
-      assigns(:contents).must_equal [content]
+      value(assigns(:contents)).must_equal [content]
     end
   end
 
   describe 'GET show' do
     it 'should assign the requested content as @content' do
       get :show, params:{ id: content.to_param }
-      assigns(:content).must_equal content
+      value(assigns(:content)).must_equal content
       assert_template :show
     end
 
     it 'GET show via xhr' do
       get :show, params: { id: content.to_param, layout: 'false' }, xhr: true
-      assigns(:content).must_equal content
+      value(assigns(:content)).must_equal content
       assert_response :success
       assert_template :clean_show
     end
@@ -48,7 +48,7 @@ class ContentsControllerTest < ActionController::TestCase
     it 'should assign the requested content as @content' do
       login_admin
       get :edit, params:{ id: content.to_param }
-      assigns(:content).must_equal content
+      value(assigns(:content)).must_equal content
       assert_template :edit
     end
   end
@@ -65,8 +65,8 @@ class ContentsControllerTest < ActionController::TestCase
 
       it 'should assign a newly created content as @content' do
         post :create, params:{ content: content_attrs }
-        assigns(:content).must_be_instance_of Content
-        assigns(:content).persisted?.must_equal true
+        value(assigns(:content)).must_be_instance_of Content
+        value(assigns(:content).persisted?).must_equal true
       end
 
       it 'should redirect to the created content' do
@@ -80,7 +80,7 @@ class ContentsControllerTest < ActionController::TestCase
         # Trigger the behavior that occurs when invalid params are submitted
         Content.any_instance.stubs(:save).returns(false)
         post :create, params:{ content: { body: '' } }
-        assigns(:content).persisted?.must_equal false
+        value(assigns(:content).persisted?).must_equal false
       end
     end
   end
@@ -91,8 +91,8 @@ class ContentsControllerTest < ActionController::TestCase
     context 'with valid params' do
       it 'should assign the requested content as @content' do
         patch :update, params:{ id: content.to_param, content: { body: 'Foobar' } }
-        assigns(:content).key.must_equal content.to_param
-        assigns(:content).body.must_equal 'Foobar'
+        value(assigns(:content).key).must_equal content.to_param
+        value(assigns(:content).body).must_equal 'Foobar'
       end
 
       it 'should redirect to the content' do

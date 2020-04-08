@@ -9,7 +9,7 @@ class ImageTest < ActiveSupport::TestCase
   let(:image) { create(:article_image) }
 
   it 'has a valid Factory' do
-    subject.valid?.must_equal true
+    value(subject.valid?).must_equal true
   end
 
   describe 'attributes' do
@@ -58,12 +58,12 @@ class ImageTest < ActiveSupport::TestCase
     describe '#url_or_original_while_processing' do
       it 'should return the original url when processing' do
         image = create :article_image, :processing
-        image.url_or_original_while_processing.must_equal image.original_image_url_while_processing
+        value(image.url_or_original_while_processing).must_equal image.original_image_url_while_processing
       end
 
       it 'should return the normal url when not processing' do
         # image.image_processing = false
-        image.url_or_original_while_processing.must_equal image.image.url(:thumb)
+        value(image.url_or_original_while_processing).must_equal image.image.url(:thumb)
       end
     end
   end

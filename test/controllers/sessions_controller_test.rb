@@ -46,13 +46,13 @@ class SessionsControllerTest < ActionController::TestCase
 
     it 'should set the user_id of an existing cart cookie' do
       post :create, params:{ user: { email: @user.email, password: 'password' } }
-      @cart.reload.user.must_equal @user
+      value(@cart.reload.user).must_equal @user
     end
 
     it 'should save belboon tracking token in user if session has token' do
       session[:belboon] = 'abcd,1234'
       post :create, params:{ user: { email: @user.email, password: 'password' } }
-      @user.reload.belboon_tracking_token.must_equal 'abcd,1234'
+      value(@user.reload.belboon_tracking_token).must_equal 'abcd,1234'
       assert_nil session[:belboon]
     end
   end

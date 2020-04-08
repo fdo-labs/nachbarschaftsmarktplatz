@@ -9,7 +9,7 @@ class LineItemTest < ActiveSupport::TestCase
   let(:db_line_item) { create :line_item }
 
   it 'has a valid factory' do
-    db_line_item.must_be :valid?
+    _(db_line_item).must_be :valid?
   end
 
   describe '#qualifies_for_belboon?' do

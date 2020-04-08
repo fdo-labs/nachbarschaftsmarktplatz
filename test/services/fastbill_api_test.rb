@@ -16,7 +16,7 @@ class FastbillAPITest < ActiveSupport::TestCase
     describe '::fastbill_chain' do
       it 'should find seller of transaction' do
         api = FastbillAPI.new bt_from_legal_entity
-        api.instance_eval('@seller').must_equal bt_from_legal_entity.seller
+        value(api.instance_eval('@seller')).must_equal bt_from_legal_entity.seller
       end
 
       describe 'when seller is a private user' do
@@ -151,12 +151,12 @@ class FastbillAPITest < ActiveSupport::TestCase
 
     it 'should return "1" when payment method is invoice' do
       user.stubs(:payment_method).returns(:payment_by_invoice)
-      api.send(:payment_type_for, user).must_equal '1'
+      value(api.send(:payment_type_for, user)).must_equal '1'
     end
 
     it 'should return "2" when payment method is direct debit' do
       user.stubs(:payment_method).returns(:payment_by_direct_debit)
-      api.send(:payment_type_for, user).must_equal '2'
+      value(api.send(:payment_type_for, user)).must_equal '2'
     end
   end
 
@@ -167,7 +167,7 @@ class FastbillAPITest < ActiveSupport::TestCase
 
       attributes = api.send(:attributes_for, alice)
 
-      attributes.must_equal(
+      value(attributes).must_equal(
         customer_type: 'business',
         organization: 'Fairix eG',
         salutation: 'Frau',
@@ -202,7 +202,7 @@ class FastbillAPITest < ActiveSupport::TestCase
 
       attributes = api.send(:attributes_for, alice)
 
-      attributes.must_equal(
+      value(attributes).must_equal(
         customer_type: 'business',
         organization: 'Fairix eG',
         salutation: 'Frau',

@@ -39,7 +39,7 @@ class RegistrationsControllerTest < ActionController::TestCase
         put :update, params: { user: @attr }
 
         assert_redirected_to @user.reload
-        @controller.instance_variable_get(:@user).about_me.must_equal @attr[:about_me]
+        expect(@controller.instance_variable_get(:@user).about_me).must_equal @attr[:about_me]
       end
     end
   end

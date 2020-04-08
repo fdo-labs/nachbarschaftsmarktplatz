@@ -32,7 +32,7 @@ class DirectDebitMandateTest < ActiveSupport::TestCase
   describe 'class methods' do
     describe '#creditor_identifier' do
       it 'should return Fairmondo SEPA Creditor Identifier' do
-        DirectDebitMandate.creditor_identifier.must_equal 'DE15ZZZ00001452371'
+        value(DirectDebitMandate.creditor_identifier).must_equal 'DE15ZZZ00001452371'
       end
     end
   end
@@ -44,7 +44,7 @@ class DirectDebitMandateTest < ActiveSupport::TestCase
         mandate = DirectDebitMandate.create(user: user, reference: '001')
         travel_back
 
-        mandate.reference_date.to_s.must_equal '2016-04-01'
+        value(mandate.reference_date.to_s).must_equal '2016-04-01'
       end
     end
 
@@ -55,7 +55,7 @@ class DirectDebitMandateTest < ActiveSupport::TestCase
         date = Date.new(2016, 4, 1)
         mandate.stubs(:reference_date).returns(date)
 
-        mandate.to_s.must_equal "REFERENCE (#{I18n.l(date)})"
+        value(mandate.to_s).must_equal "REFERENCE (#{I18n.l(date)})"
       end
     end
   end
@@ -66,31 +66,31 @@ class DirectDebitMandateTest < ActiveSupport::TestCase
     end
 
     it 'should be new for a new instance' do
-      mandate.state.must_equal 'new'
-      mandate.activated_at.must_be_nil
-      mandate.revoked_at.must_be_nil
+      value(mandate.state).must_equal 'new'
+      value(mandate.activated_at).must_be_nil
+      value(mandate.revoked_at).must_be_nil
     end
 
     it 'should be able to get activated' do
       mandate.activate!
 
-      mandate.state.must_equal 'active'
-      mandate.activated_at.wont_be_nil
+      value(mandate.state).must_equal 'active'
+      value(mandate.activated_at).wont_be_nil
     end
 
     it 'should be able to get inactive if active' do
       mandate.activate!
       mandate.deactivate!
 
-      mandate.state.must_equal 'inactive'
+      value(mandate.state).must_equal 'inactive'
     end
 
     it 'should be able to get revoked if active' do
       mandate.activate!
       mandate.revoke!
 
-      mandate.state.must_equal 'revoked'
-      mandate.revoked_at.wont_be_nil
+      value(mandate.state).must_equal 'revoked'
+      value(mandate.revoked_at).wont_be_nil
     end
   end
 end
