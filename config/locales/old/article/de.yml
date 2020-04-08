@@ -82,7 +82,7 @@ de:
       fair_percent: "Das faire Prozent"
       friendly_percent: "Spendenanteil"
       will_be: " werden an "
-      donate_html: "1% werden vom Nachbarschaftsmarktplatz an <a href='http://www.transparency.de/' target='_blank'>Transparency International Deutschland e.V.</a> nach Jahresende gespendet."
+      donate_html: ""
       donate_ngo_html: "100% des Erlöses gehen an %{ngo}. Es fallen keine Verkaufsgebühren an."
       donate_ngo_short_html: "%{percent}% gehen an %{ngo}"
       friendly_percent_html: "Diese*r Anbieter*in spendet %{percent}% an %{ngo}"
@@ -228,16 +228,15 @@ de:
       double_check:
         title: Alle Angaben überprüft?
       tooltips:
-        fp_fee_info: >
-          %{percent}% des Artikelendpreises werden bei erfolgreichem Verkauf von Dir an %{ngo} gespendet. Auf den Spendenanteil fallen keine Verkaufsgebühren an. Informationen zur Spendenabwicklung findest Du <a href='https://www.fairmondo.de/faq#spa2' target='_blank'>hier</a> und in der Bestätigungsmail bei erfolgreichem Verkauf.
-        fees_quarter_fee: "Zusätzlich zu den Verkaufsgebühren wird je Geschäftsquartal, in dem Du erfolgreich mindestens einmal verkauft hast, eine Quartalsgebühr von 1,‒ Euro fällig (inkl. 19% MwSt)."
-        fees_mass_upload: "Bei erfolgreichem Verkauf jedes Artikels gehen 6% des Artikelendpreises an den Nachbarschaftsmarktplatz. Bei Artikeln unter dem Filter fair fallen lediglich 3% an. Der hier aufgeführte Betrag bezieht auf die summierten Gebühren beim erfolgreichen Verkauf aller Artikel (gemäß der angegebenen Stückzahl)."
-        fees_and_donations: "1% des Artikelendpreises wird bei erfolgreichem Verkauf automatisch vom Nachbarschaftsmarktplatz an Initiativen, die sich gegen Korruption einsetzen, gespendet."
+        fp_fee_info: ""
+        fees_quarter_fee: "Die Nutzung des Nachbarschaftsmarktplatz is vollständig kostenlos. Es fallen weder Grundgebühren noch Verkaufsprovisionen oder anderweitige Kosten an."
+        fees_mass_upload: "Der Verkauf von Artikeln auf dem Nachbarschaftsmarktplatz ist vollständig kostenlos."
+        fees_and_donations: ""
         friendly_percent: "%{percent}% des Artikelendpreises wird bei erfolgreichem Verkauf durch den*die Anbieter*in an %{ngo} gespendet."
-        fees_and_donations_mass_upload: "1% des Artikelendpreises wird bei erfolgreichem Verkauf automatisch vom Nachbarschaftsmarktplatz an Initiativen, die sich gegen Korruption einsetzen, gespendet. Da das 1% für jeden Artikel einzeln berechnet, eventuell aufgerundet und dann für alle hochgeladenen Artikel summiert wird, ist der hier ausgewiesene Betrag möglicherweise höher als 1%."
+        fees_and_donations_mass_upload: ""
         fees: "Die Gebührentabelle findest Du <hier>."
         double_check: >
-          Dann stelle Deinen Artikel ein. Das Einstellen des Artikels ist kostenlos, bei Verkauf fallen die unter Gebühren und Spenden gelisteten Verkaufsgebühren an.
+          Dann stelle Deinen Artikel ein. Das Einstellen und der Verkauf des Artikels ist kostenlos.
   article_templates:
     titles:
       index: Deine Vorlagen

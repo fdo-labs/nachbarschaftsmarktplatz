@@ -17,9 +17,9 @@
 
 /= render 'last_hearted_libraries', last_hearted_libraries: @last_hearted_libraries
 
-= render 'article_queue', number: 1, side: :left, queue: @queue1
+/= render 'article_queue', number: 1, side: :left, queue: @queue1
 
-= render 'article_queue', number: 2, side: :right, queue: @queue2
+/= render 'article_queue', number: 2, side: :right, queue: @queue2
 
 /= render 'trending_libraries', trending_libraries: @trending_libraries
 
@@ -36,3 +36,6 @@
 
 /- cache 'ngo_logos' do
   = render 'ngo_logos'
+
+/- cache 'partners' do
+  = render 'partners'

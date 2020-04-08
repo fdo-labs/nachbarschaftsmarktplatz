@@ -15,7 +15,7 @@ de:
           blog: "Blog"
           newsletter: "Newsletter"
           map: "Nachbarschaftskarte"
-          open_source: "GitHub"
+          github: "GitHub"
         marketplace:
           heading: "Marktplatz"
           sign_up: "Registrieren"

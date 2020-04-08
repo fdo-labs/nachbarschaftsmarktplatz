@@ -49,20 +49,20 @@ de:
       crowd_funding: "Dein Nachbarschaftsmarktplatz braucht Dich! Jetzt Anteile zeichnen:\nhttps://www.fairmondo.de/anteile"
       spacer: "----------"
       intro: "Diese Nachricht wurde vom Nachbarschaftsmarktplatz, www.nachbarschaftsmarktplatz.de, gesendet."
-      contact: "Kontakt: nachbarschaftsmarktplatz@posteo.de, Nachbarschaftsmarktplatz c/o Jakob Kolb, Fuldastr. 19 12045 Berlin"
+      contact: "Kontakt: nama.coop@posteo.de, Nachbarschaftsmarktplatz c/o Jakob Kolb, Fuldastr. 19 12045 Berlin"
       footer_contact: |
         Nachbarschaftsmarktplatz
         c/o Jakob Kolb
         Fuldastr. 19
         12045 Berlin
-        nachbarschaftsmarktplatz@posteo.de
+        nama.coop@posteo.de
       registered: |
       board: ""
-      ceo: "Vorstandsvorsitzender: "
-      supervisory_board: "Aufsichtsratsvorsitzender: "
-      facebook: "Facebook: https://www.facebook.com/fairmondo"
-      facebook_html: "<a href='https://www.facebook.com/fairmondo'>Facebook</a>"
-      buy_shares: "Anteile zeichnen: https://www.fairmondo.de/anteile"
+      ceo: ""
+      supervisory_board: ""
+      facebook: "Facebook: https://fb.me/nama.coop"
+      facebook_html: "<a href='https://fb.me/nama.coop'>Facebook</a>"
+      buy_shares: "Anteile zeichnen: https://www.nachbarschaftsmarktplatz.de/anteile"
     actions:
       continue: "Weiter"
       back: "Zurück"
@@ -172,7 +172,7 @@ de:
       article_not_found_html: '<p><b>Fehler:</b> Mindestens ein Artikel konnte nicht gefunden werden.</p>'
 
   meta_tags:
-    description: "Kaufe, verkaufe, tausche und verleihe faire und nachhaltige Mode, Bücher, Lebensmittel, Spielzeug und Designartikel auf dem Nachbarschaftsmarktplatz, dem Online Marktplatz für Alle."
+    description: "Kaufe, verkaufe, tausche und verleihe faire und nachhaltige Mode, Bücher, Lebensmittel, Spielzeug und Designartikel auf dem Nachbarschaftsmarktplatz, dem Online Marktplatz Geschäfte in deiner Nähe."
     keywords: "Nachbarschaftsmarktplatz, COVID-19 Crisis Relief, Marktplatz, Fair, Genossenschaft"
 
   flash:
