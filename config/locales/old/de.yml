@@ -60,8 +60,8 @@ de:
       board: ""
       ceo: ""
       supervisory_board: ""
-      facebook: "Facebook: https://www.facebook.com/fairmondo"
-      facebook_html: "<a href='https://www.facebook.com/fairmondo'>Facebook</a>"
+      facebook: "Facebook: https://fb.me/nama.coop"
+      facebook_html: "<a href='https://fb.me/nama.coop'>Facebook</a>"
       buy_shares: "Anteile zeichnen: https://www.nachbarschaftsmarktplatz.de/anteile"
     actions:
       continue: "Weiter"
