@@ -48,7 +48,7 @@ nav id="l-header-mnav" class="l-header-mnav" role="navigation"
           li.mnav-menu-item-submenu-item
             = link_to t('.admin.statistics'), '/statistics/general'
           li.mnav-menu-item-submenu-item
-            = link_to t('.admin.sidekiq'), '/sidekiq_'
+            = link_to t('.admin.sidekiq'), sidekiq_web_path + "_"
 
     / Marketplace
     li.l-header-mnav-menu-item.l-header-mnav--parent
@@ -121,7 +121,7 @@ nav.l-header-nav
           li
             = link_to t('.admin.statistics'), statistics_general_path
           li
-            = link_to t('.admin.sidekiq'), sidekiq_web_path
+            = link_to t('.admin.sidekiq'), sidekiq_web_path + "_"
     / About us
     li.TouchHover
       = link_to t('.about_us.title'), '/ueber_uns'
