@@ -16,7 +16,6 @@ class ArticleSearchForm
 
   attribute :condition, type: String
   attribute :category_id, type: Integer
-  attribute :exclude_category_ids, type: Array
   attribute :zip, type: String
   attribute :order_by, type: String,
                        default_blank: true
