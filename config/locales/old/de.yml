@@ -1,6 +1,6 @@
 de:
   welcome:
-    greetings: "Willkommen bei Fairmondo"
+    greetings: "Willkommen auf dem Nachbarschaftsmarktplatz"
     search_fair: "Artikel oder Anbieter suchen"
     # trending_libraries: "Trend-Sammlungen" Nach Weihnachten zurückstellen
     trending_libraries:
@@ -10,7 +10,7 @@ de:
       heading: "Mit Spendenanteil"
       more: "Mehr Artikel mit Spendenanteil"
     fairmondo-shirts:
-      heading: "Fairmondo-Shop"
+      heading: "Nachbarschaftsmarktplatz"
       more: "Mehr"
     vouchers:
       heading: "Gutscheine, die Gutes tun"
@@ -24,7 +24,7 @@ de:
         link:        "Jetzt ansehen"
         label:       "fair"
       ecologic:
-        teaser_html: "Öko? Logisch!<br>Auf Fairmondo."
+        teaser_html: "Solidarisch durch die Krise. Mit dem Nachbarschaftsmarktplatz."
         description: "Öko-Produkte auf einen Blick"
         link:        "Hier reinschauen"
         label:       "öko"
@@ -40,27 +40,26 @@ de:
         label:       "gebraucht"
 # Common Texts
   common:
-    brand: "www.fairmondo.de"
-    fairmondo: "Fairmondo – Gutes einfach entdecken"
-    fairmondo_name: "Fairmondo"
+    brand: "www.nachbarschaftsmarktplatz.de"
+    fairmondo: "Nachbarschaftsmarktplatz – Solidarisch durch die Krise"
+    fairmondo_name: "Nachbarschaftsmarktplatz"
     claim: "dreh' das Spiel um"
-    fn_footer_greeting: "Dein Fairmondo-Team"
+    fn_footer_greeting: "Dein Nachbarschaftsmarktplatz-Team"
     fn_legal_footer:
-      crowd_funding: "Fairmondo braucht Dich! Jetzt Anteile zeichnen:\nhttps://www.fairmondo.de/anteile"
+      crowd_funding: "Dein Nachbarschaftsmarktplatz braucht Dich! Jetzt Anteile zeichnen:\nhttps://www.fairmondo.de/anteile"
       spacer: "----------"
-      intro: "Diese Nachricht wurde von Fairmondo, www.fairmondo.de, gesendet."
-      contact: "Kontakt: email@fairmondo.de, Fairmondo eG, Glogauer Str. 21, 10999 Berlin"
+      intro: "Diese Nachricht wurde vom Nachbarschaftsmarktplatz, www.nachbarschaftsmarktplatz.de, gesendet."
+      contact: "Kontakt: nachbarschaftsmarktplatz@posteo.de, Nachbarschaftsmarktplatz c/o Jakob Kolb, Fuldastr. 19 12045 Berlin"
       footer_contact: |
-        Fairmondo eG
-        Glogauer Str. 21
-        10999 Berlin
-        email@fairmondo.de
+        Nachbarschaftsmarktplatz
+        c/o Jakob Kolb
+        Fuldastr. 19
+        12045 Berlin
+        nachbarschaftsmarktplatz@posteo.de
       registered: |
-        Registergericht: Amtsgericht Berlin-Charlottenburg, GnR 738 B;
-        USt-IdNr: DE 290376380
-      board: "Vorstand: Kim Stattaus, Martin Mortensen-Zimber"
-      ceo: "Vorstandsvorsitzender: Kim Stattaus"
-      supervisory_board: "Aufsichtsratsvorsitzender: Simon Köhl"
+      board: ""
+      ceo: "Vorstandsvorsitzender: "
+      supervisory_board: "Aufsichtsratsvorsitzender: "
       facebook: "Facebook: https://www.facebook.com/fairmondo"
       facebook_html: "<a href='https://www.facebook.com/fairmondo'>Facebook</a>"
       buy_shares: "Anteile zeichnen: https://www.fairmondo.de/anteile"
@@ -112,7 +111,7 @@ de:
       surname: "Nachname"
       relation: "Beziehung"
       inserted: "Artikel wurden bereits eingestellt"
-      no_search_result_text: "Keine Suchergebnisse unter den Fairmondo-Artikeln"
+      no_search_result_text: "Keine Suchergebnisse auf dem Nachbarschaftsmarktplatz"
       libraries: "Sammlungen"
       my_libraries: "Meine Sammlungen"
       about_terms: "Meine Firmendaten"
@@ -173,8 +172,8 @@ de:
       article_not_found_html: '<p><b>Fehler:</b> Mindestens ein Artikel konnte nicht gefunden werden.</p>'
 
   meta_tags:
-    description: "Kaufe, verkaufe, tausche und verleihe faire und nachhaltige Mode, Bücher, Lebensmittel, Spielzeug und Designartikel auf Fairmondo, dem Online Marktplatz für Alle."
-    keywords: "Fairmondo, Marktplatz, Fair, Genossenschaft"
+    description: "Kaufe, verkaufe, tausche und verleihe faire und nachhaltige Mode, Bücher, Lebensmittel, Spielzeug und Designartikel auf dem Nachbarschaftsmarktplatz, dem Online Marktplatz für Alle."
+    keywords: "Nachbarschaftsmarktplatz, COVID-19 Crisis Relief, Marktplatz, Fair, Genossenschaft"
 
   flash:
     ratings:
@@ -193,4 +192,4 @@ de:
         notice: "%{resource_name} wurde gelöscht."
         alert: "%{resource_name} konnte nicht gelöscht werden."
 
-  noscript: "Du hast JavaScript ausgeschaltet oder verwendest einen Browser, der kein JavaScript unterstützt. Um Fairmondo optimal zu nutzen, schalte bitte JavaScript ein."
+  noscript: "Du hast JavaScript ausgeschaltet oder verwendest einen Browser, der kein JavaScript unterstützt. Um den Nachbarschaftsmarktplatz optimal zu nutzen, schalte bitte JavaScript ein."

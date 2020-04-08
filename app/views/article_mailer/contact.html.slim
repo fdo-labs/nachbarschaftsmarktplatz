@@ -15,7 +15,7 @@ p
   center
     = mail_to @from,
       t('email.article.contact.reply_button'),
-      subject: "[Fairmondo] Deine Anfrage zu #{@article.title}",
+      subject: "[Nachbarschaftsmarktplatz] Deine Anfrage zu #{@article.title}",
       body: @text,
       class: 'Button'
 
@@ -24,7 +24,7 @@ p
     = "E-Mail-Adresse von #{ @user.nickname }: "
     = mail_to @from,
       @user.email,
-      subject: "[Fairmondo] Deine Anfrage zu #{@article.title}",
+      subject: "[Nachbarschaftsmarktplatz] Deine Anfrage zu #{@article.title}",
       body: @text
 p
   = t('email.article.contact.article_link_text')

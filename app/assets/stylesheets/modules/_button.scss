@@ -20,6 +20,7 @@ Styleguide Buttons
 
   text-align: center;
   color: white !important; // we want it to be readable
+  a { color: white !important; } // unfortunately there is no 'catch all pseudo-classes' syntax
   background-color: $blue;
   -webkit-appearance: none;
 

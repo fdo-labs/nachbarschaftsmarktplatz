@@ -2,14 +2,14 @@ de:
   shared:
     fairmondo:
       name: "Nachbarschaftsmarktplatz"
-      claim: "Gutes einfach entdecken"
+      claim: "Solidarisch durch die Krise"
       url: "https://shop.nachbarschaftsmarktplatz.de/"
     meta_tags:
       description: |
-        Kaufe, verkaufe, tausche und verleihe faire und nachhaltige Mode,
+        Kaufe lokal - Mode,
         Bücher, Lebensmittel, Spielzeug und Designartikel auf dem Nachbarschaftsmarktplatz,
-        dem Online Marktplatz für Alle.
-      keywords: "Fairmondo, Marktplatz, Fair, Genossenschaft"
+        dem Online Marktplatz des lokalen Einzelhandel.
+      keywords: "Nachbarschaftsmarktplatz, Solidarisch, Fair, Genossenschaft"
     actions:
       logout: "Abmelden"
       login: "Anmelden"

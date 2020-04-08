@@ -42,7 +42,8 @@
         = f.input :basic_price_amount, as: :select, tooltip: true
         - if current_user.standard_address_country == "Deutschland"
           = f.input :vat, required: true, tooltip: true, as: :select, collection: [0,7,19]
-    .Accordion-step
+    /.Accordion-step
+      / Hide this for MVP
       = f.input :swappable, tooltip: true
       = f.input :borrowable, tooltip: true
 = f.input_step :upload_images, tooltip: t('formtastic.tooltips.article.upload_images_input_step') do
@@ -111,7 +112,8 @@
 
       = f.input :payment_debit, as: :plain_check_box ,js_toggle: true if current_user.can_offer_debit_payment?
 
-      = f.inputs id: 'payment_debit-checked', class: "payment_debit" do
+      /= f.inputs id: 'payment_debit-checked', class: "payment_debit" do
+      / hide subscriptions for MVP
         = f.input :subscription, as: :plain_check_box
 
       = f.input :payment_voucher, as: :plain_check_box if current_user.uses_vouchers
@@ -119,7 +121,8 @@
       = f.input :payment_details, input_html: {rows: 7}
 
 
-= f.input_step :commendation, tooltip: true do
+/= f.input_step :commendation, tooltip: true do
+/ hide for MVP
   = f.inputs do
     .Accordion-step
       = f.input :fair, as: :plain_check_box, tooltip: true, js_toggle: true
@@ -146,12 +149,12 @@
         = f.input :small_and_precious_reason, tooltip: true, required: true
         = f.input :small_and_precious_handmade, as: :radio, tooltip: true, required: true
 
-- if !current_user.ngo
+/- if !current_user.ngo
+/ hide for MVP
   = f.input_step :friendly_percent, tooltip: true do
     = f.inputs do
       .Accordion-step
         = f.input :friendly_percent, as: :select, collection: [['0%',0],['1%',1],['3%',3],['5%',5],['10%',10],['25%',25],['35%',35],['50%',50],['75%',75],['100%',100]], include_blank: false
-
         - available_organisations = User.sorted_ngo_without_current(current_user)
         = f.input :friendly_percent_organisation, as: :select, tooltip: true, collection: available_organisations, input_html: {class: "js-friendly-percent-organisation-select"}, selected: default_organisation_from(available_organisations)
         .js-friendly-percent-organisation-label

@@ -180,8 +180,8 @@ de:
       exhibition_name:
         donation_articles: '*Spendenanteil*-Artikel'
         dream_team: '(Dream Team)'
-        old: '*Gebraucht bei Fairmondo*-Artikel'
-        fairmondo_likes: '*Fairmondo mag*-Artikel'
+        old: '*Gebraucht auf dem Nachbarschaftsmarktplatz*-Artikel'
+        fairmondo_likes: '*Der Nachbarschaftsmarktplatz mag*-Artikel'
         fair_highlights: '*Besonders & fair*-Artikel'
         ecologic_highlights: '*Besonders & öko*-Artikel'
         small_and_precious_highlights: '*Besonders & edel*-Artikel'
@@ -210,7 +210,7 @@ de:
         cooperative: "Genossenschaft"
         hero: "Heldenprogramm"
         ngo: "Organisation & Spenden"
-        honor: "Fairmondo Auszeichnungen"
+        honor: "Nachbarschaftsmarktplatz Auszeichnungen"
         other: "Anderes"
         trust_community: "Trust Community"
       help_subject:
@@ -223,7 +223,7 @@ de:
         cooperative: "Genossenschaft"
         hero: "Heldenprogramm"
         ngo: "Organisation & Spenden"
-        honor: "Fairmondo Auszeichnungen"
+        honor: "Nachbarschaftsmarktplatz Auszeichnungen"
         other: "Anderes"
         trust_community: "Trust Community"
     refund:

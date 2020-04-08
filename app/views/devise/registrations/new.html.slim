@@ -7,29 +7,28 @@ h1= t('common.actions.sign_up')
   = f.semantic_errors
 
   = f.inputs do
-    = f.input :nickname, label: 'Dein Nutzername', tooltip: false
+    = f.input :nickname, label: t('users.labels.nickname'), tooltip: false
     = f.input :type, as: :boolean, required: false, tooltip: true, unchecked_value: "PrivateUser", checked_value: "LegalEntity"
-    = f.input :referral, as: :boolean, label: "Ich komme von Dawanda", required: false, tooltip: false, checked_value: "Dawanda"
-    = f.input :email, label: 'Deine E-Mail-Adresse', tooltip: false
-    = f.input :password, label: 'Dein Passwort', tooltip: true
+    = f.input :email, label: t('users.labels.email'), tooltip: false
+    = f.input :password, label: t('users.labels.password'), tooltip: true
     / render partial: "/devise/registrations/password_complexity"
     / onclick javascript because icheck causes click on link to fail
-    - legal_link = checkbox_link_helper t('users.legal_abbr'), '/agb'
-    - privacy_link = checkbox_link_helper t('users.privacy'), '/datenschutz'
+    - legal_link = checkbox_link_helper t('users.legal_abbr'), t('users.legal_url')
+    - privacy_link = checkbox_link_helper t('users.privacy'), t('users.privacy_url')
     = f.input :legal, as: :boolean, required: true, label: t("users.i_accept_both", legal: legal_link, privacy: privacy_link).html_safe
 
-    = f.input :voluntary_contribution, required: false,
+    /= f.input :voluntary_contribution, required: false,
               as: :radio, tooltip: true,
               collection: { 'Kein Beitrag' => '', '3 €' => 3, '5 €' => 5, '10 €' => 10 }
 
-    = f.input :newsletter, as: :boolean, label: 'Ich möchte den monatlichen Newsletter mit besonderen Produktvorstellungen erhalten (jederzeit abbestellbar).', required: false, tooltip: false
+    = f.input :newsletter, as: :boolean, label: t('users.labels.newsletter'), required: false, tooltip: false
 
   = f.actions do
     = f.action :submit, button_html: { class: "Button Button--action", id: "sign_up" }, label: :sign_up
 
 #registration_marketing
-  h2 Darum solltest Du Dich jetzt registrieren:
+  h2 = t('users.aside.heading')
   ul.checklist
-    li Die schönsten und fairsten Produkte im Netz entdecken
-    li Fördere sozialen und ressourcenschonenden Konsum
-    li Mit Käufen & Verkäufen einfach Hilfsprojekte unterstützen
+    li = t('users.aside.bullet1')
+    li = t('users.aside.bullet2')
+    li = t('users.aside.bullet3')
