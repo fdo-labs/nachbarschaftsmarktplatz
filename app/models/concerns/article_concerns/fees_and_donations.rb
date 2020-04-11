@@ -7,11 +7,11 @@ module ArticleConcerns
     extend ActiveSupport::Concern
 
     TRANSACTION_FEES = {
-      min: 10,
-      max_fair: 1_500,
-      max_default: 3_000,
-      fair: 0.03,
-      default: 0.06
+      min: 0,
+      max_fair: 0,
+      max_default: 0,
+      fair: 0,
+      default: 0
     }
 
     included do
@@ -89,7 +89,7 @@ module ArticleConcerns
     ## fees and donations
 
     def fair_percentage
-      seller.ngo ? 0 : 0.01
+      seller.ngo ? 0 : 0
     end
 
     def fair_percent_result
