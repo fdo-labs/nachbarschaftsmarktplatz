@@ -216,7 +216,7 @@ de:
         fair_percent: "Das faire Prozent (1%):"
         mass_upload_fair_percent: "Das faire Prozent (1%) bei Verkauf aller Artikel (gemäß der angegebenen Stückzahl):"
         friendly_percent: "Deine Spende:"
-        fee: "Gebühr bei Verkauf\n(%{fee} – max. %{max}, min. € 0,10):"
+        fee: "Gebühr bei Verkauf:" # (removing all fees) # \n(%{fee} – max. %{max}, min. € 0,10):"
         total_fee_mass_upload: "Gebühr bei Verkauf aller Artikel (gemäß der angegebenen Stückzahl)"
         total: "Gesamtpreis bei Verkauf, inkl. 19% MwSt:"
         total_mass_upload: "Gebühren und Spenden bei Verkauf des gesamten Artikelkontingents, Gesamtpreis (inkl. 19% MwSt):"

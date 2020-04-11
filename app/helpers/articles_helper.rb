@@ -68,7 +68,10 @@ module ArticlesHelper
     # we can't be sure if the book is german
     # so we dont show fair percent on all new books
     # book category is written in exceptions.yml
-    article.belongs_to_legal_entity? && !article.could_be_book_price_agreement? && article.friendly_percent != 100
+
+    # disable fair percent
+    # article.belongs_to_legal_entity? && !article.could_be_book_price_agreement? && article.friendly_percent != 100
+    false
   end
 
   def available_transport method
