@@ -164,7 +164,7 @@ h1= t('common.actions.edit_profile')
           = f.input :bic, required: true, input_html: {id: "bic"}, label: t('formtastic.labels.user.bic'), tooltip: true
 
         / only LegalEntities will be billed for fees
-        - if resource.is_a?(LegalEntity)
+        /- if resource.is_a?(LegalEntity)
           .Accordion-step
             - direct_debit_link = link_to t('formtastic.labels.user.sepa'), '/sepa?layout=false', target: '_blank', class: 'ungrouped_colorbox'
             - if resource.active_direct_debit_mandate.present?

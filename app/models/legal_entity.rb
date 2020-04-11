@@ -15,8 +15,11 @@ class LegalEntity < User
 
   validates :bank_account_owner, :iban, :bic,
             presence: true, on: :update, if: :wants_to_sell?, unless: :direct_debit_exemption
-  validate :must_have_active_direct_debit_mandate,
-           if: :wants_to_sell?, unless: :direct_debit_exemption
+  
+  # Disable requirement for direct debit manadate for current stage
+  # todo: this should be an option in the application settings
+  # validate :must_have_active_direct_debit_mandate,
+  #         if: :wants_to_sell?, unless: :direct_debit_exemption
 
   after_initialize :initialize_state_machines
 
