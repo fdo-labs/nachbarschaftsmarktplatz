@@ -6,5 +6,5 @@ module ImageParams
   extend ActiveSupport::Concern
 
   IMAGE_PARAMS = %i(image is_title).freeze
-  NESTED_IMAGE_PARAMS = (%i(_destroy, id) + IMAGE_PARAMS).freeze
+  NESTED_IMAGE_PARAMS = (%i(_destroy id) + IMAGE_PARAMS).freeze
 end
