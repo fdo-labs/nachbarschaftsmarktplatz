@@ -532,7 +532,7 @@ GEM
     shoulda-context (1.2.2)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    sidekiq (6.0.6)
+    sidekiq (5.2.7)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       rack-protection (>= 2.0.0)

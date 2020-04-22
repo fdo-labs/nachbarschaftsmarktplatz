@@ -5,7 +5,7 @@
 class ArticleSearchForm
   include ActiveData::Model
   extend Enumerize
-  delegate :formated_prices, to: :@price_range
+  delegate :formated_prices, to: :price_range_parser
 
   attribute :q, type: String
   attribute :fair, type: Boolean
@@ -16,7 +16,6 @@ class ArticleSearchForm
 
   attribute :condition, type: String
   attribute :category_id, type: Integer
-  attribute :exclude_category_ids, type: Array
   attribute :zip, type: String
   attribute :order_by, type: String,
                        default_blank: true
@@ -33,17 +32,16 @@ class ArticleSearchForm
   end
 
   def search page
+    if page.to_i > 1000
+      return [].page(1)
+    end
     @search = ArticleSearch.search(self)
     results = @search.result.page(page).per(Kaminari.config.default_per_page)
     results.to_a # dont get rid of this as it will trigger the request and the rescue block can come in
     results
-  rescue Faraday::ClientError => error
-    puts "Faraday ClientError"
-    puts error
+  rescue Faraday::ClientError
     search_results_for_error_case page
-  rescue StandardError => error
-    puts "StandardError"
-    puts error
+  rescue StandardError
     search_results_for_error_case page
   end
 
@@ -107,11 +105,14 @@ class ArticleSearchForm
     end
   end
 
-  def price_range
+  def price_range_parser
     @price_range ||= PriceRangeParser.new(price_from, price_to)
+  end
+
+  def price_range
     # set the values for proper formatting
-    self.price_from, self.price_to = @price_range.form_values
-    { gte: @price_range.from_cents, lte: @price_range.to_cents }
+    self.price_from, self.price_to = price_range_parser.form_values
+    { gte: price_range_parser.from_cents, lte: price_range_parser.to_cents }
   end
 
   private

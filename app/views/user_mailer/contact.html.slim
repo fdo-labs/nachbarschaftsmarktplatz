@@ -13,7 +13,7 @@ p
   center
     = mail_to @sender.email,
       t('email.article.contact.reply_button'),
-      subject: "[Fairmondo] #{ @receiver.nickname } hat Dir eine Antwort geschickt",
+      subject: "[Nachbarschaftsmarktplatz] #{ @receiver.nickname } hat Dir eine Antwort geschickt",
       body: @text,
       class: 'Button'
 
@@ -22,7 +22,7 @@ p
     = "E-Mail-Adresse von #{ @sender.nickname }: "
     = mail_to @sender.email,
       @sender.email,
-      subject: "[Fairmondo] #{ @receiver.nickname } hat Dir eine Antwort geschickt",
+      subject: "[Nachbarschaftsmarktplatz] #{ @receiver.nickname } hat Dir eine Antwort geschickt",
       body: @text
 
 - content_for 'sidebar' do

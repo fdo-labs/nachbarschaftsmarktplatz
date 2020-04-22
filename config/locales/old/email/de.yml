@@ -1,43 +1,43 @@
 de:
   email:
     greeting: "Hallo %{name},"
-    close: 'Dein Fairmondo Team.'
+    close: 'Dein Nachbarschaftsmarktplatz-Team.'
     greeting_nickname: "Hallo %{nickname},"
-    security_warning: "Sicherheitshinweis: Der Kaufvertrag kommt zwischen Dir und dem Anbieter zustande. Fairmondo ist bekanntlich nur Plattformbetreiberin. Um Dich gegen Betrugsfälle zu schützen, empfiehlt Fairmondo – inbesondere bei Artikeln und Käufen ab 100 Euro – eine sichere Bezahlmethode wie PayPal (da PayPal einen Käuferschutz beinhaltet) oder Barzahlung bei Abholung. In Einzelfällen kann es bspw. auch sinnvoll sein, Dir die Eigentümerstellung bzw. Nachweise der Echtheit (z.B. Software) oder Unversehrtheit (durch Fotos bei Gebrauchtartikeln) zusenden zu lassen."
+    security_warning: "Sicherheitshinweis: Der Kaufvertrag kommt zwischen Dir und dem Anbieter zustande. Der Nachbarschaftsmarktplatz ist bekanntlich nur Plattformbetreiber. Um Dich gegen Betrugsfälle zu schützen, empfiehlt das Nachbarschaftsmarktplatz-Team – inbesondere bei Artikeln und Käufen ab 100 Euro – eine sichere Bezahlmethode wie PayPal (da PayPal einen Käuferschutz beinhaltet) oder Barzahlung bei Abholung. In Einzelfällen kann es bspw. auch sinnvoll sein, Dir die Eigentümerstellung bzw. Nachweise der Echtheit (z.B. Software) oder Unversehrtheit (durch Fotos bei Gebrauchtartikeln) zusenden zu lassen."
     transport_address: 'Lieferadresse'
     payment_address: 'Rechnungsadresse'
     social_button: "Wir bei %{network}"
-    imprint_heading: Impressum von Fairmondo
+    imprint_heading: Impressum des Nachbarschaftsmarktplatz
     imprint: |
-      Fairmondo eG
-      Glogauer Str. 21
-      10999 Berlin
-      email@fairmondo.de
+      Nachbarschaftsmarktplatz
+      c/o Jakob Kolb
+      Fuldastr. 19
+      12045 Berlin
+      nama.coop@posteo.de
 
-      Registergericht: Amtsgericht Berlin-Charlottenburg, GnR 738 B; USt-IdNr: DE 290376380
-      Vorstand: Kim Stattaus, Martin Mortensen-Zimber
-      Aufsichtsratsvorsitzender: Simon Köhl
+      Registergericht: ""
+      Vorstand: ""
+      Aufsichtsratsvorsitzender: ""
 
-      www.fairmondo.de
-      dreh' das Spiel um
+      www.nachbarschaftsmarktplatz.de
     pdf_reader_link: 'Hier kostenloses PDF-Anzeigeprogramm herunterladen.'
-    facebook: Fairmondo bei Facebook
+    facebook: Der Nachbarschaftsmarktplatz bei Facebook
     buy_shares: 'Anteile zeichnen'
     header:
-      support_button: 'Fairmondo unterstützen'
+      support_button: 'Den Nachbarschaftsmarktplatz unterstützen'
     footer:
       contact: 'Kontakt'
-      registration_court: 'Registergericht'
-      board: 'Vorstand'
+      registration_court: ''
+      board: ''
 
-    quartal_fee: 'Zzgl. der Quartalsgebühr von 1,‒ Euro (inkl. 19% MwSt) bei erfolgreichem Verkauf.'
+    quartal_fee: ''
     payments:
       cash_on_delivery: 'Nachnahme'
       paypal: 'PayPal'
       bank_transfer: 'Überweisung'
       invoice: 'Rechnung'
       cash: 'Barzahlung bei Abholung'
-      voucher: Gutschein
+      voucher: 'Gutschein'
     article:
       contact:
         text_beginning: 'hat dir eine Rückfrage zu deinem Artikel'
@@ -45,16 +45,16 @@ de:
         reply_button: 'Anfrage beantworten'
         article_link_text: 'Den Artikel zu der Rückfrage findest Du unter '
       activation:
-        subject: '[Fairmondo] Du hast einen Artikel auf Fairmondo eingestellt'
-        text: 'Du hast erfolgreich einen Artikel auf Fairmondo eingestellt.'
-        fees: 'Bei erfolgreichem Verkauf fallen folgende Gebühren an (inkl. 19% MwSt.):'
+        subject: '[Nachbarschaftsmarktplatz] Du hast einen Artikel auf dem Nachbarschaftsmarktplatz eingestellt'
+        text: 'Du hast erfolgreich einen Artikel auf dem Nachbarschaftsmarktplatz eingestellt.'
+        fees: ''
         cancellation_heading: 'Widerrufsbelehrung'
         cancellation_text: |
           Widerrufsrecht
 
           Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.
 
-          Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Fairmondo eG, Glogauer Str. 21, 10999 Berlin, Telefon: 030/91462560, Telefax: 030/89615845, E-Mail: kundenservice@fairmondo.de) mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.
+          Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Nachbarschaftsmarktplatz c/o Jakob kolb, Fuldastr. 19, 12045 Berlin, Telefon: , Telefax: , E-Mail: nama.coop@posteo.de) mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.
 
           Folgen des Widerrufs
 
@@ -67,11 +67,12 @@ de:
           aus und senden Sie es zurück.)
 
           An
-          Fairmondo eG
-          Glogauer Str. 21
-          10999 Berlin
-          Telefax: 030/89615845,
-          E-Mail: kundenservice@fairmondo.de
+          Nachbarschaftsmarktplatz
+          c/o Jakob Kolb
+          Fuldastr. 19
+          12045 Berlin
+          Telefax: ,
+          E-Mail: nama.coop@posteo.de
 
           Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag
           über den Kauf der folgenden Waren (*)/die Erbringung der folgenden
@@ -87,9 +88,9 @@ de:
 
           Datum'
       mass_upload_finished:
-        success_subject: '[Fairmondo] Dein CSV-Upload ist abgeschlossen'
+        success_subject: '[Nachbarschaftsmarktplatz] Dein CSV-Upload ist abgeschlossen'
         success: 'Dein CSV-Upload %{file_name} wurde erfolgreich verarbeitet.'
-        failure_subject: '[Fairmondo] Bei deinem CSV-Upload sind Fehler aufgetreten'
+        failure_subject: '[Nachbarschaftsmarktplatz] Bei deinem CSV-Upload sind Fehler aufgetreten'
         failure: 'Bei der Verarbeitung Deiner CSV Datei durch das System ist ein Fehler aufgetreten. Klicke hier um den Fehler anzuzeigen:'
         to_activate: 'Dabei musst Du noch %{count} Artikel aktivieren.'
         created_articles: 'Neu erstellte Artikel: %{count}'
@@ -101,18 +102,18 @@ de:
       mass_activation:
         text: 'Du hast erfolgreich per CSV-Upload eingestellte Artikel aktiviert.'
         to_csv: 'Hier kommst Du zu Deinem CSV-Upload: '
-        subject: '[Fairmondo] Du hast Deine per CSV-Dateien eingestellten Artikel aktiviert'
+        subject: '[Nachbarschaftsmarktplatz] Du hast Deine per CSV-Dateien eingestellten Artikel aktiviert'
       mass_deletion:
         text: 'Du hast erfolgreich Artikel gelöscht.'
         to_csv: 'Hier kommst Du zu Deinem CSV-Upload: '
     cart:
       buyer:
-        heading: 'Dein Einkauf auf Fairmondo'
+        heading: 'Dein Einkauf auf dem Nachbarschaftsmarktplatz'
         text: |
           Vielen Dank für Deinen Einkauf! Alle Bestelldaten sind unten für Dich
           zusammengefasst.
         visit_your_profile: 'Um die gekauften Artikel zu bezahlen, besuche bitte Dein'
-        signoff: 'Dein Fairmondo-Team.'
+        signoff: 'Dein Nachbarschaftsmarktplatz-Team.'
         user_profile: 'Nutzer*innen-Profil'
         your_purchase: 'Dein Einkauf bei'
         your_message: 'Deine Nachricht an den*die Verkäufer*in'
@@ -120,21 +121,21 @@ de:
         terms_and_cancellation: "AGB, Widerrufsbelehrung für Verbraucher sowie Muster-Widerrufsformular von %{name}"
         selected_payment: 'Gewählte Zahlungsart(en):'
       send_cart:
-        subject: '[Fairmondo] Deine vorgemerkten Artikel auf Fairmondo'
-        heading: 'Deine vorgemerkten Artikel auf Fairmondo'
-        text: 'Du hast Dir folgende Artikel auf Fairmondo vorgemerkt:'
+        subject: '[Nachbarschaftsmarktplatz] Deine vorgemerkten Artikel auf dem Nachbarschaftsmarktplatz'
+        heading: 'Deine vorgemerkten Artikel auf dem Nachbarschaftsmarktplatz'
+        text: 'Du hast Dir folgende Artikel auf dem Nachbarschaftsmarktplatz vorgemerkt:'
         articles_from: 'Artikel von'
-        go_to_fm: 'Zu Fairmondo'
+        go_to_fm: 'Zum Nachbarschaftsmarktplatz'
         register: 'Jetzt registrieren'
     line_item_group:
       seller:
-        heading: 'Dein Verkauf auf Fairmondo'
-        text: 'Herzlichen Glückwunsch! Du hast erfolgreich Artikel auf Fairmondo verkauft. Hier findest Du eine Übersicht aller Artikel Deines Auftrags.'
+        heading: 'Dein Verkauf auf dem Nachbarschaftsmarktplatz'
+        text: 'Herzlichen Glückwunsch! Du hast erfolgreich Artikel auf dem Nachbarschaftsmarktplatz verkauft. Hier findest Du eine Übersicht aller Artikel Deines Auftrags.'
         bought_from_you: 'hat bei Dir gekauft:'
         buyer_message: 'Nachricht des*der Käufer*in'
         view_and_pay: 'Bestellung ansehen und versenden'
     voucher:
-      heading: 'Neue Gutscheinzahlung auf Fairmondo'
+      heading: 'Neue Gutscheinzahlung auf dem Nachbarschaftsmarktplatz'
       text: 'folgende Artikel wurden von %{buyer} per Gutschein mit dem Gutscheincode <b>%{code}</b> bezahlt:'
       total: "Gesamt: %{total}"
       money_left_over: 'Dadurch ist ein Spendenbetrag von <b>%{amount}</b> entstanden. Bitte leite diesen an die Organisation weiter, die Du in dem Gutschein angegeben hast.'
@@ -144,6 +145,6 @@ de:
       purchase_id: 'Transaktionsnummer:'
     user:
       contact:
-        subject: '[Fairmondo] ein/e Nutzer*in hat eine Frage an Dich'
+        subject: '[Nachbarschaftsmarktplatz] ein/e Nutzer*in hat eine Frage an Dich'
         text_beginning: 'hat Dir eine Frage gestellt:'
 

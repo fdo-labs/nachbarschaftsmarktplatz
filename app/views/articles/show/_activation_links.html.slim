@@ -7,19 +7,21 @@
         dt.reduced_padding.visible
           = f.inputs do
             - legal_link = checkbox_link_helper t('users.legal_link'), '/agb'
-            - privacy_link = checkbox_link_helper t('users.privacy_link'), '/datenschutz'
+            - privacy_link = checkbox_link_helper t('users.privacy_link'), '/privacy'
             = f.input :tos_accepted, as: :boolean, required: false, wrapper_html: { class: 'no-margin' }, label: t("formtastic.labels.user.tos_accepted", legal: legal_link, privacy: privacy_link).html_safe
 
         dt
           = simple_format t('article.preview.fees_and_donations.fee', fee: (resource.fair ? "3%" : "6%"), max: (resource.fair ? "€15" : "€30")  )
-          span.sprite_helper title= "Bei erfolgreichem Verkauf gehen 6% des Artikelendpreises an Fairmondo. Bei Artikeln unter dem Filter fair fallen lediglich 3% an."
+          span.sprite_helper title= "Wir arbeiten 100% ehrenamtlich zur Unterstützung des lokalen Einzelhandels. Beim Verkauf über den Nachbarschaftsmarktplatz fallen weder Gebühren noch Verkaufsprovision an."
         dd
           = humanized_money_with_symbol resource.calculated_fee
-        dt
-          = t('article.preview.fees_and_donations.fair_percent')
-          span.sprite_helper title= t("article.preview.tooltips.fees_and_donations")
-        dd
-          = humanized_money_with_symbol resource.calculated_fair
+
+        - if show_fair_percent_for? resource
+          dt
+            = t('article.preview.fees_and_donations.fair_percent')
+            span.sprite_helper title= t("article.preview.tooltips.fees_and_donations")
+          dd
+            = humanized_money_with_symbol resource.calculated_fair
 
         - if show_friendly_percent_for? resource
           dt
@@ -29,7 +31,6 @@
 
         dt.total
           = t('article.preview.fees_and_donations.total')
-          span.sprite_helper title="Die Gesamtgebühr setzt sich aus den obigen Komponenten zusammen."
         dd.total
           = humanized_money_with_symbol resource.calculated_fees_and_donations
           = "*"
@@ -37,7 +38,8 @@
           = "* " << t('article.preview.fees_and_donations.netto')
           =< humanized_money_with_symbol resource.calculated_fees_and_donations_netto
 
-        - if !resource.seller.ngo
+        / disabling all fees for MVP
+        /- if !resource.seller.ngo
           dt
             /! = t('article.preview.fees_and_donations.quarter_fee')
             | Zzgl. der
@@ -62,7 +64,7 @@
     - if resource.sold?
       = link_to "Artikel zum Wiedereinstellen bearbeiten", new_article_path(edit_as_new: resource.id), :class=>"Button Button--large"
     - else
-      - if resource.seller.ngo || resource.seller.is_a?(PrivateUser)
+      - if resource.seller.ngo || resource.seller.is_a?(PrivateUser) || resource.calculated_fees_and_donations == 0
         - btn_text = show_friendly_percent_for?(resource) ? t("article.labels.submit_free_with_fp") : t("article.labels.submit_free")
       - else
         - btn_text = show_friendly_percent_for?(resource) ? t("article.labels.submit_with_fp") : t("article.labels.submit")

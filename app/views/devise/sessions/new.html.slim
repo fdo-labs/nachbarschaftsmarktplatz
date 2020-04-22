@@ -10,12 +10,12 @@
 - if devise_mapping.registerable? && controller_name != 'registrations'
   #sessions_marketing
     h2 Noch kein Konto?
-    p Fairmondo – die faire Alternative zu den Marktriesen im Online-Handel
+    p Der Nachbarschaftsmarktplatz - Unterstützung für den lokalen Einzelhandel, in der Krise und darüber hinaus.
     ul.checklist
       li Verkaufe neue oder gebrauchte Artikel – ohne Einschränkungen
-      li Komplett kostenfrei wenn Du privat verkaufst
+      li Einstellung und Verkauf vollständig kostenlos
+      li Abholung im Ladengeschäft oder Versand nach Hause
       li Wir schützen Deine Daten und Privatsphäre
-      li Gemeinsam bringen wir Fairness und Transparenz in den Online-Handel
     = link_to 'Neu registrieren', new_registration_path(:user),
       class: 'Button Button--action'
 
@@ -27,10 +27,9 @@
         article
           h3 Deine Vorteile:
           ul.checklist
-            li Kaufen, verkaufen, leihen oder tauschen – alles komplett gebührenfrei
+            li Kaufen und verkaufen – komplett gebührenfrei
             li
              | Profi-Funktionen wie Versandrabattregeln
-            li Sammle ganz einfach Spenden für Dein Lieblings-Hilfsprojekt
             li Gemeinsam erschaffen wir ein Unternehmen, das vielen gehört und ohne große Investoren auskommt
 
       section.sellers#business_sellers
@@ -38,12 +37,9 @@
         article
           h3 Deine Vorteile:
           ul.checklist
-            li Keine Einstellgebühr
-            li Nur 4&thinsp;% Verkaufsgebühr für fair gehandelte Artikel, und 7&thinsp;% für alle anderen Artikel
+            li Keine Gebühren oder Provisionen
+            li Mehr einfache Erreichbarkeit und mehr sichtbarkeit für dein Sortiment
             li Profi-Funktionen wie Versandrabattregeln oder CSV-Schnittstellen
-            li
-              | Demokratische Kontrolle des Unternehmens durch Dich als
-              =< link_to 'Genossenschaftsmitglied', '/genossenschaft/'
 
       section#questions
         h2 Du hast noch Fragen?
@@ -53,8 +49,8 @@
             =< link_to 'FAQ für Verkäufer*innen', '/faq#d1'
           li
             | Triff andere Verkäufer*innen in unserem
-            =< link_to 'Forum',
-              'https://forum.fairmondo.de/c/verkaufer-innen-forum',
+            =< link_to 'Telegram Kanal',
+              'https://t.me/nachbarschaftsmarktplatz',
               target: '_blank'
           li
             | Frage unseren freundlichen

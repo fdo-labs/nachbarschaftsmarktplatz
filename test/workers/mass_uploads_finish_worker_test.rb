@@ -9,6 +9,6 @@ class MassUploadsFinishWorkerTest < ActiveSupport::TestCase
     mass_upload = create(:mass_upload_to_finish)
     MassUploadsFinishWorker.new.perform
     mass_upload.reload
-    mass_upload.state.must_equal 'finished'
+    value(mass_upload.state).must_equal 'finished'
   end
 end

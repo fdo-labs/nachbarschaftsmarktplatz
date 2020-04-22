@@ -36,7 +36,7 @@ de:
       send_instructions: 'Du erhältst in wenigen Minuten eine E-Mail, mit der Du Deine Registrierung bestätigen kannst.'
       send_paranoid_instructions: 'Falls Deine E-Mail-Adresse in unserer Datenbank existiert, erhältst Du in wenigen Minuten eine E-Mail mit einer Anleitung, wie Du Dein Profil bestätigen kannst.'
       confirmed: >
-        Wir begrüßen Dich herzlich bei Fairmondo, dem fairen Online-Marktplatz in Hand der Nutzer*innen! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
+        Wir begrüßen Dich herzlich auf dem Nachbarschaftsmarktplatz, dem fairen Online-Marktplatz in Hand der Nutzer*innen! Bevor Du auf dem Marktplatz handeln kannst, benötigen wir weitere persönliche Daten von Dir, wie z.B. Deine Adresse.
         Diese kannst Du in Deinem Profil eintragen.
     registrations:
       changed_email: "Du erhältst in Kürze eine E-Mail um Deine E-Mail-Adressänderung zu bestätigen. Deine Änderung wird erst nach Deiner Bestätigung wirksam."
@@ -56,10 +56,10 @@ de:
       failure: 'Du konntest nicht mit Deinem %{kind}-Account angemeldet werden, weil "%{reason}".'
     mailer:
       welcome_mail:
-        subject: '[Fairmondo] Anleitung zur Bestätigung Deines Accounts'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung zur Bestätigung Deines Accounts'
       confirmation_instructions:
-        subject: '[Fairmondo] Bitte bestätige Deine E-Mail-Adresse'
+        subject: '[Nachbarschaftsmarktplatz] Bitte bestätige Deine E-Mail-Adresse'
       reset_password_instructions:
-        subject: '[Fairmondo] Anleitung um Dein Passwort zurückzusetzen'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung um Dein Passwort zurückzusetzen'
       unlock_instructions:
-        subject: '[Fairmondo] Anleitung um Deinen Account freizuschalten'
+        subject: '[Nachbarschaftsmarktplatz] Anleitung um Deinen Account freizuschalten'

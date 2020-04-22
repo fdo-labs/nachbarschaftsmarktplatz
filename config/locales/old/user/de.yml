@@ -21,12 +21,25 @@ de:
     legal_abbr: "AGB"
     legal_new: "Allgemeinen Geschäftsbedingungen."
     legal_link: "den AGB, der Widerrufsbelehrung"
+    legal_url: "/agb"
     privacy: "Datenschutzerklärung"
     privacy_link: "der Datenschutzerklärung"
+    privacy_url: "/privacy"
     i_accept_both: "Ich bin über 18 Jahre alt und stimme den %{legal} und der %{privacy} zu."
     terms_new_info: "die Allgemeinen Geschäftsbedingungen und Datenschutzerklährung haben sich geändert. Diese müssen akzeptiert werden, bevor du weiter machen kannst."
-    activate_all_articles: "Du kannst in diesem Schritt alle bisher eingestellten Artikel zum Verkauf auf Fairmondo freischalten."
+    activate_all_articles: "Du kannst in diesem Schritt alle bisher eingestellten Artikel zum Verkauf auf dem Nachbarschaftsmarktplatz freischalten."
     complexify: Passwortstärke
+    labels:
+      nickname: "Dein Nutzername"
+      email: "Deine E-Mail-Adresse"
+      password: "Dein Passwort"
+      newsletter: "Ich möchte den monatlichen Newsletter mit allgmeinen Neuigkeiten und Ankündigungen erhalten (jederzeit abbestellbar)."
+    aside:
+      heading: "Darum solltest Du Dich jetzt registrieren:"
+      bullet1: "Online einkaufen bei deinen Lieblingsläden in der Nachbarschaft"
+      bullet2: "Fördere lokalen und sozialen Konsum"
+      bullet3: "Du kannst deine Bestellung flexibel selbst abholen oder zu dir nach Hause liefern lassen"
+      bullet4: "Unterstütze den lokalen Einzelhandel in der Corona-Krise"
     visibility:
       public: "Öffentlich"
       private: "Privat"

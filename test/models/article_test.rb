@@ -110,8 +110,8 @@ class ArticleTest < ActiveSupport::TestCase
         FileUtils.cp(Rails.root.join('test', 'fixtures', 'test.png'), testpath) # copy the image
 
         dup = article.amoeba_dup
-        dup.images[0].id.wont_equal article.images[0].id
-        dup.images[0].image_file_name.must_equal article.images[0].image_file_name
+        value(dup.images[0].id).wont_equal article.images[0].id
+        value(dup.images[0].image_file_name).must_equal article.images[0].image_file_name
       end
     end
 
@@ -122,11 +122,11 @@ class ArticleTest < ActiveSupport::TestCase
         end
 
         it "should return false when article doesn't belong to user" do
-          db_article.owned_by?(create(:user)).must_equal false
+          value(db_article.owned_by?(create(:user))).must_equal false
         end
 
         it 'should return true when article belongs to user' do
-          db_article.owned_by?(db_article.seller).must_equal true
+          value(db_article.owned_by?(db_article.seller)).must_equal true
         end
       end
     end
@@ -140,51 +140,51 @@ class ArticleTest < ActiveSupport::TestCase
     describe '#fee_percentage' do
       it 'should return the fair percentage when article.fair' do
         article.fair = true
-        article.send('fee_percentage').must_equal 0.03
+        value(article.send('fee_percentage')).must_equal 0.03
       end
 
       it 'should return the default percentage when !article.fair' do
-        article.send('fee_percentage').must_equal 0.06
+        value(article.send('fee_percentage')).must_equal 0.06
       end
 
       it 'should return 0 percentage when article.seller.ngo' do
         article.seller.ngo = true
-        article.send('fee_percentage').must_equal 0
+        value(article.send('fee_percentage')).must_equal 0
       end
     end
 
     describe '#calculate_fees_and_donations' do
       it 'should have 100 % friendly_percent for ngo' do
-        ngo_article.friendly_percent.must_equal 100
+        value(ngo_article.friendly_percent).must_equal 100
       end
 
       # expand these unit tests!
       it 'should return zeros on fee and fair cents with a friendly_percent of gt 100' do
         article.friendly_percent = 101
         article.calculate_fees_and_donations
-        article.calculated_fair.must_equal 0
-        article.calculated_fee.must_equal 0
+        value(article.calculated_fair).must_equal 0
+        value(article.calculated_fee).must_equal 0
       end
 
       it 'should return zeros on fee and fair cents with a price of 0' do
         article.price = 0
         article.calculate_fees_and_donations
-        article.calculated_fair.must_equal 0
-        article.calculated_fee.must_equal 0
+        value(article.calculated_fair).must_equal 0
+        value(article.calculated_fee).must_equal 0
       end
 
       it 'should return the max fee when calculated_fee gt max fee' do
         article.price = 9999
         article.fair = false
         article.calculate_fees_and_donations
-        article.calculated_fee.must_equal Money.new(3000)
+        value(article.calculated_fee).must_equal Money.new(3000)
       end
 
       it 'should always round the fair cents up' do
         article.price = 789.23
         article.fair = false
         article.calculate_fees_and_donations
-        article.calculated_fair.must_equal Money.new(790)
+        value(article.calculated_fair).must_equal Money.new(790)
       end
 
       it 'should be no fees for ngo' do
@@ -192,8 +192,8 @@ class ArticleTest < ActiveSupport::TestCase
         article.price = 999
 
         article.calculate_fees_and_donations
-        article.calculated_fair.must_equal 0
-        article.calculated_fee.must_equal 0
+        value(article.calculated_fair).must_equal 0
+        value(article.calculated_fee).must_equal 0
       end
     end
   end
@@ -203,26 +203,26 @@ class ArticleTest < ActiveSupport::TestCase
       it 'should throw an error if no payment option is selected' do
         article.payment_cash = false
         article.save
-        article.errors[:payment_details].must_equal [I18n.t('article.form.errors.invalid_payment_option')]
+        value(article.errors[:payment_details]).must_equal [I18n.t('article.form.errors.invalid_payment_option')]
       end
 
       it 'should throw an error if bank transfer is selected, but bank data is missing' do
         db_article.seller.stubs(:bank_account_exists?).returns(false)
         db_article.payment_bank_transfer = true
         db_article.save
-        db_article.errors[:payment_bank_transfer].must_equal [I18n.t('article.form.errors.bank_details_missing')]
+        value(db_article.errors[:payment_bank_transfer]).must_equal [I18n.t('article.form.errors.bank_details_missing')]
       end
 
       it 'should throw an error if paypal is selected, but bank data is missing' do
         db_article.payment_paypal = true
         db_article.save
-        db_article.errors[:payment_paypal].must_equal [I18n.t('article.form.errors.paypal_details_missing')]
+        value(db_article.errors[:payment_paypal]).must_equal [I18n.t('article.form.errors.paypal_details_missing')]
       end
 
       it 'should allow dashes in transport_time' do
         db_article.transport_time = '3 – 5'
         db_article.save
-        db_article.errors[:transport_time].must_equal []
+        value(db_article.errors[:transport_time]).must_equal []
       end
 
       should validate_numericality_of(:transport_type1_number)
@@ -247,10 +247,10 @@ class ArticleTest < ActiveSupport::TestCase
       describe '#selectable (private)' do
         it 'should return an array with selected transport options, the default being first' do
           output = create(:article, :with_all_payments, :with_all_transports).send(:selectable, 'transport')
-          output.must_include 'pickup'
-          output.must_include 'type1'
-          output.must_include 'type2'
-          output.must_include 'bike_courier'
+          value(output).must_include 'pickup'
+          value(output).must_include 'type1'
+          value(output).must_include 'type2'
+          value(output).must_include 'bike_courier'
         end
       end
     end
@@ -260,12 +260,12 @@ class ArticleTest < ActiveSupport::TestCase
     describe 'methods' do
       describe '#title_image_url' do
         it "should return the first image's URL when one exists" do
-          db_article.title_image_url.must_match %r#/system/images/.*/original/test.png#
+          expect(db_article.title_image_url).must_match %r#/system/images/.*/original/test.png#
         end
 
         it 'should return the missing-image-url when no image is set' do
           article = create :article
-          article.title_image_url.must_equal 'missing.png'
+          value(article.title_image_url).must_equal 'missing.png'
         end
 
         it "should return the first image's URL when one exists" do
@@ -275,19 +275,19 @@ class ArticleTest < ActiveSupport::TestCase
             image.save
           end
           article.save
-          article.errors[:images].must_equal [I18n.t('article.form.errors.only_one_title_image')]
+          value(article.errors[:images]).must_equal [I18n.t('article.form.errors.only_one_title_image')]
         end
 
         it 'should return the processing image while processing when requested a thumb' do
           title_image = create(:article_image, :processing)
           db_article.images = [title_image]
-          db_article.title_image_url(:thumb).must_equal title_image.image.url(:thumb)
+          value(db_article.title_image_url(:thumb)).must_equal title_image.image.url(:thumb)
         end
 
         it 'should return the original image while processing when requested a medium image' do
           title_image = create(:article_image, :processing)
           db_article.images = [title_image]
-          db_article.title_image_url(:medium).must_equal title_image.original_image_url_while_processing
+          value(db_article.title_image_url(:medium)).must_equal title_image.original_image_url_while_processing
         end
       end
 
@@ -340,10 +340,10 @@ class ArticleTest < ActiveSupport::TestCase
         article_2cat = build :article, :with_child_category
         article_3cat = build :article, :with_3_categories
 
-        article_0cat.valid?.must_equal false
-        article_1cat.valid?.must_equal true
-        article_2cat.valid?.must_equal true
-        article_3cat.valid?.must_equal false
+        value(article_0cat.valid?).must_equal false
+        value(article_1cat.valid?).must_equal true
+        value(article_2cat.valid?).must_equal true
+        value(article_3cat.valid?).must_equal false
       end
     end
   end
@@ -358,8 +358,8 @@ class ArticleTest < ActiveSupport::TestCase
           article.save
           article.tos_accepted = '1'
           article.activate
-          article.reload.calculated_fee.must_be :>, 0
-          article.calculated_fair.must_be :>, 0
+          value(article.reload.calculated_fee).must_be :>, 0
+          value(article.calculated_fair).must_be :>, 0
         end
       end
     end
@@ -373,12 +373,12 @@ class ArticleTest < ActiveSupport::TestCase
     describe '#save_as_template?' do
       it 'should return true when the save_as_template attribute is 1' do
         @article.save_as_template = '1'
-        @article.save_as_template?.must_equal true
+        value(@article.save_as_template?).must_equal true
       end
 
       it 'should return false when the save_as_template attribute is 0' do
         @article.save_as_template = '0'
-        @article.save_as_template?.must_equal false
+        value(@article.save_as_template?).must_equal false
       end
     end
   end
