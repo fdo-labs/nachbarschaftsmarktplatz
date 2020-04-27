@@ -97,7 +97,7 @@ h1= t('common.actions.edit_profile')
           h3= t('users.form_titles.address')
 
           / show map in address area
-          = render 'welcome/map', classname: "embedded", zoomControl: false
+          = render 'addresses/map'
 
           = semantic_fields_for @user.standard_address do |af|
             = af.inputs do
