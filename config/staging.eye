@@ -6,7 +6,7 @@ Eye.config do
   logger "#{dir}/log/eye.log"
 end
 
-Eye.application 'fairmondo' do
+Eye.application 'nama-staging' do
   working_dir dir
 
   group 'sidekiq' do
