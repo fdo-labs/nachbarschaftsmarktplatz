@@ -71,20 +71,29 @@ module WelcomeHelper
   end
 
   def user_addresses_as_json
-    LegalEntity.all.map{ |entity, index| 
-      address = Address.find_by(user:entity); 
+    require 'net/http'
+    require 'uri'
+    require 'json'
+    
+    uri = URI('https://map.nachbarschaftsmarktplatz.de/get_shop_info.php')
+    response = Net::HTTP.get_response(uri)
+    data = JSON.parse(response.body)
+    return data
 
-      puts address
+    #LegalEntity.all.map{ |entity, index| 
+    #  address = Address.find_by(user:entity); 
 
-      address === nil ? nil : {
-          company_name: [address.company_name, entity.fullname].find(&:present?), 
-          address: entity.address, 
-          about: entity.about_me,
-          image: entity.image_url(:profile),
-          latitude: 52.489432 + rand(10) * 0.003,
-          longitude: 13.386894 + rand(10) * 0.003,
-        } 
+    #  puts address
 
-      }.reject(&:nil?).to_json
+    #  address === nil ? nil : {
+    #      company_name: [address.company_name, entity.fullname].find(&:present?), 
+    #      address: entity.address, 
+    #      about: entity.about_me,
+    #      image: entity.image_url(:profile),
+    #      latitude: 52.489432 + rand(10) * 0.003,
+    #      longitude: 13.386894 + rand(10) * 0.003,
+    #    } 
+
+     # }.reject(&:nil?).to_json
   end
 end
