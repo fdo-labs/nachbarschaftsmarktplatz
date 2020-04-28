@@ -71,20 +71,20 @@ module WelcomeHelper
   end
 
   def user_addresses_as_json
-    LegalEntity.all.map{ |entity, index| 
-      address = Address.find_by(user:entity); 
+    User.where(show_on_map: true).map{ |user, index| 
+      address = Address.find_by(user:user); 
 
       if address === nil || address.longitude == nil || address.latitude == nil 
         nil
       else 
         {
-          company_name: [address.company_name, entity.fullname].find(&:present?),  # select either company_name or fullname, wichever is present
-          address: entity.address, 
-          about: entity.about_me,
-          image: entity.image_url(:profile),
+          company_name: [address.company_name, user.fullname].find(&:present?),  # select either company_name or fullname, wichever is present
+          address: user.address, 
+          about: user.about_me,
+          image: user.image_url(:profile),
           latitude: address.latitude,
           longitude: address.longitude,
-          shop_url: user_path(entity)
+          shop_url: user_path(user)
         }
       end
       }.reject(&:nil?).to_json

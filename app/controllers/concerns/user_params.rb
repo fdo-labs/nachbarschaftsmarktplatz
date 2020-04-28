@@ -18,7 +18,8 @@ module UserParams
     :iban, :bic, :bank_name, :bank_account_owner, :direct_debit_confirmation,
     :unified_transport_provider, :unified_transport_maximum_articles, :unified_transport_price,
     :free_transport_available, :free_transport_at_price,
-    { image_attributes: ImageParams::IMAGE_PARAMS }
+    { image_attributes: ImageParams::IMAGE_PARAMS },
+    :show_on_map
   ].freeze
   USER_UPDATE_LEGAL_ENTITY_PARAMS = %i(
     terms cancellation about cancellation_form invoicing_email order_notifications_email

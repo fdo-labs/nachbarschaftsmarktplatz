@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200428091358) do
+ActiveRecord::Schema.define(version: 20200428104012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -546,6 +546,7 @@ ActiveRecord::Schema.define(version: 20200428091358) do
     t.integer "next_direct_debit_mandate_number", default: 1
     t.boolean "marketplace_owner_account", default: false
     t.text "referral", default: ""
+    t.boolean "show_on_map"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

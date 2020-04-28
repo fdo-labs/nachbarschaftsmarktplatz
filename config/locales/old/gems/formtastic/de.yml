@@ -54,6 +54,7 @@ de:
         tos_accepted: "Ich stimme %{legal} und %{privacy} zu."
         invoicing_email: "E-Mail-Adresse für Rechnungen"
         order_notifications_email: "E-Mail-Adresse für Bestellbenachrichtigungen"
+        show_on_map: "Zeige meine Addresse auf der Karte"
       private_user:
         <<: *user
       legal_entity:
