@@ -93,17 +93,15 @@ javascript:
         var longitude_info  = document.querySelector('#longitude_info');
         var latitude_info   = document.querySelector('#latitude_info');
 
-        // do we need the country?
+        // prepare address string for nomatim
+        var address_nomatim = [address_line_1,address_line_2, zip, city].join("+").replace(/ /g,"+");
 
-        var address_nomatim = [address_line_1,address_line_2, zip, city].join("+");
-        console.log(address_nomatim);
-    
         $.ajax({
             url:nomatim_url+"/search?q="+address_nomatim+"&format=json",
             type: "GET",
             dataType: "json",
             success:function(res) {
-                
+
                 if(res.length > 0) {
                     var latitude  = res[0].lat;
                     var longitude = res[0].lon;
