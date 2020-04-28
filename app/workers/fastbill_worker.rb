@@ -10,13 +10,13 @@ class FastbillWorker
                   backtrace: true
 
   def perform(id)
-    BusinessTransaction.transaction do
-      bt = BusinessTransaction.lock.find(id)
+    #BusinessTransaction.transaction do
+    #  bt = BusinessTransaction.lock.find(id)
       # check if bt is qualified for discount
-      Discount.discount_chain(bt) if bt.article_discount_id
+    #  Discount.discount_chain(bt) if bt.article_discount_id
       # Start the fastbill chain, to create invoices and add items to invoice
-      api = FastbillAPI.new(bt)
-      api.fastbill_chain
+    #  api = FastbillAPI.new(bt)
+    #  api.fastbill_chain
     end
   end
 end

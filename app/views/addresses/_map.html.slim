@@ -1,8 +1,9 @@
 / this map is only to be used in the registration or the edit profileform
 
-div#map class="embedded"
-
-#shop-info
+#map-container
+    #map
+    span#longitude_info 
+    span#latitude_info
 
 
 = stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -22,10 +23,14 @@ css:
         padding-top: 50px;
     }
 
-    #map.embedded {
+    #map-container {
         position: absolute;
         right: 0;
         width: 50% !important;
+    }
+
+    #longitude_info {
+        float: right;
     }
 
     .nxt-content {
@@ -67,13 +72,27 @@ javascript:
         add_marker(); // set initial marker
     }, false);
 
+    function remove_marker() {
+        // remove old marker
+        if(typeof marker !== "undefined") {
+            map.removeLayer(marker)
+        }
+    }
+
     // create markers and set that sidebar opens and closes when click on marker
     function add_marker() {
         var nomatim_url     = "https://nominatim.openstreetmap.org";
-        var address_line_1  = $('form #address_address_line_1').val();
-        var address_line_2  = $('form #address_address_line_2').val();
-        var zip             = $('form #address_zip').val();
-        var city            = $('form #address_city').val();
+        var address_line_1  = document.querySelector('form #address_address_line_1').value;
+        var address_line_2  = document.querySelector('form #address_address_line_2').value;
+        var zip             = document.querySelector('form #address_zip').value;
+        var city            = document.querySelector('form #address_city').value;
+
+        // geocoordinates
+        var longitude_input = document.querySelector('form #address_longitude');
+        var latitude_input  = document.querySelector('form #address_latitude');
+        var longitude_info  = document.querySelector('#longitude_info');
+        var latitude_info   = document.querySelector('#latitude_info');
+
         // do we need the country?
 
         var address_nomatim = [address_line_1,address_line_2, zip, city].join("+");
@@ -84,20 +103,29 @@ javascript:
             type: "GET",
             dataType: "json",
             success:function(res) {
-                var latitude  = res[0].lat;
-                var longitude = res[0].lon;
+                
+                if(res.length > 0) {
+                    var latitude  = res[0].lat;
+                    var longitude = res[0].lon;
+                } else {
+                    var latitude  = 0;
+                    var longitude = 0;
+                }
+
                 var coordinates = [latitude, longitude];
+
+                remove_marker();
+                longitude_input.value = longitude 
+                latitude_input.value = latitude 
+                longitude_info.textContent = longitude 
+                latitude_info.textContent = latitude 
 
                 if ( latitude > 0 && longitude > 0 ) {
 
-                    // remove old marker
-                    if(typeof marker !== "undefined") {
-                        map.removeLayer(marker)
-                    }
-                
                     marker = L.marker(coordinates)
                     marker.addTo(map);
                     map.setView(coordinates, 12);
+
                 }
             }
         });

@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20200428091358) do
     t.string "country", limit: 255
     t.integer "user_id"
     t.boolean "stashed", default: false
+    t.float "longitude"
+    t.float "latitude"
     t.index ["user_id"], name: "addresses_user_id_index"
   end
 

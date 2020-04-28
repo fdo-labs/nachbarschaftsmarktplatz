@@ -108,6 +108,8 @@ h1= t('common.actions.edit_profile')
               = af.input :zip, required: true
               = af.input :city, required: true
               = af.input :country, required: true, as: :select, collection: [t('users.countries.germany')]
+              = af.input :longitude, required: false, as: :hidden
+              = af.input :latitude, required: false, as: :hidden
 
           = f.input :phone
           = f.input :mobile
