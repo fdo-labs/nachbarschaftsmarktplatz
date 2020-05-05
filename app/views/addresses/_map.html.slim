@@ -1,0 +1,130 @@
+/ this map is only to be used in the registration or the edit profileform
+
+#map-container
+    #map
+    span#longitude_info 
+    span#latitude_info
+
+
+= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+= stylesheet_link_tag "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.css"
+
+= javascript_include_tag "https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+= javascript_include_tag "https://cdn.jsdelivr.net/npm/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.min.js"
+
+
+css:
+    #map {
+        z-index: 0;
+        position: relative;
+        height: 500px; 
+        width: 100%;
+        padding-top: 50px;
+    }
+
+    #map-container {
+        position: absolute;
+        right: 0;
+        width: 50% !important;
+    }
+
+    #longitude_info {
+        float: right;
+    }
+
+    .nxt-content {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+    }
+
+    .navbar {
+        height: 50px;
+        width: 100%;
+    }
+
+javascript:
+    // initialize the map
+    var map = L.map('map', { zoomControl: false }).setView([52.511946, 13.406166], 12);
+    var imgNotAvailable = 'https://www.postfreeadvertising.com/wp-content/uploads/2018/08/no-image-available-grid-263x172.png'
+    var toBeUsedTile = 'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token={accessToken}'
+    var myStyle = 'https://api.mapbox.com/styles/v1/myusernameisthis/ck8k8w25g02d01jmnnbehc46d/tiles/512/{z}/{x}/{y}?access_token={accessToken}'
+    var stadiamaps = 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png'
+    var osmMap = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
+    var cartoDB = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+    // load a tile layer
+    L.tileLayer(
+    toBeUsedTile,
+    {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        minZoom: 11,
+        //accessToken: 'pk.eyJ1IjoibXl1c2VybmFtZWlzdGhpcyIsImEiOiJjazhndmhzNmYwNHV3M3NzMDcwNGs1ZjZzIn0.2ZRug8MHanm-5yQd9ptfGg',
+        accessToken: 'pk.eyJ1IjoiaGVzc2xhdSIsImEiOiJjazhpcmFxbmwwMmR5M2hwYWptbGdsbXNuIn0.uvVb2KclwLDJGMbr_PgXaQ',
+        tileSize: 512,
+        zoomOffset: -1
+    }
+    ).addTo(map);
+
+    document.addEventListener('DOMContentLoaded', function(){ 
+        document.querySelector('form #address_address_line_1').onblur = add_marker;
+        add_marker(); // set initial marker
+    }, false);
+
+    function remove_marker() {
+        // remove old marker
+        if(typeof marker !== "undefined") {
+            map.removeLayer(marker)
+        }
+    }
+
+    // create markers and set that sidebar opens and closes when click on marker
+    function add_marker() {
+        var nomatim_url     = "https://nominatim.openstreetmap.org";
+        var address_line_1  = document.querySelector('form #address_address_line_1').value;
+        var address_line_2  = document.querySelector('form #address_address_line_2').value;
+        var zip             = document.querySelector('form #address_zip').value;
+        var city            = document.querySelector('form #address_city').value;
+
+        // geocoordinates
+        var longitude_input = document.querySelector('form #address_longitude');
+        var latitude_input  = document.querySelector('form #address_latitude');
+        var longitude_info  = document.querySelector('#longitude_info');
+        var latitude_info   = document.querySelector('#latitude_info');
+
+        // prepare address string for nomatim
+        var address_nomatim = [address_line_1,address_line_2, zip, city].join("+").replace(/ /g,"+");
+
+        $.ajax({
+            url:nomatim_url+"/search?q="+address_nomatim+"&format=json",
+            type: "GET",
+            dataType: "json",
+            success:function(res) {
+
+                if(res.length > 0) {
+                    var latitude  = res[0].lat;
+                    var longitude = res[0].lon;
+                } else {
+                    var latitude  = 0;
+                    var longitude = 0;
+                }
+
+                var coordinates = [latitude, longitude];
+
+                remove_marker();
+                longitude_input.value = longitude 
+                latitude_input.value = latitude 
+                longitude_info.textContent = longitude 
+                latitude_info.textContent = latitude 
+
+                if ( latitude > 0 && longitude > 0 ) {
+
+                    marker = L.marker(coordinates)
+                    marker.addTo(map);
+                    map.setView(coordinates, 12);
+
+                }
+            }
+        });
+    }
