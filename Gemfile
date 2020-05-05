@@ -78,7 +78,7 @@ gem 'premailer-rails'
 
 # # ---------- Background Processing ----------
 
-gem 'sidekiq'
+gem 'sidekiq', '<= 5.2.7'
 gem 'sidekiq-scheduler'
 gem 'sinatra', '>= 1.3.0', require: nil
 gem 'delayed_paperclip', '2.9.2'

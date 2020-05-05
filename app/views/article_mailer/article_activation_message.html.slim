@@ -15,11 +15,6 @@ p
     br
     = "Verkaufsgebühren: "
     = humanized_money_with_symbol(@article.calculated_fee)
-    br
-    = "Faires Prozent: "
-    = humanized_money_with_symbol(@article.calculated_fair)
-    br
-    = link_to t('email.quartal_fee'), 'https://fairmondo.de/faq#e1'
 
 - if @article.calculated_friendly && @article.calculated_friendly > 0
   p
