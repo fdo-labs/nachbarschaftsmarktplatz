@@ -17,12 +17,12 @@ end
 
 user = User.find_by_email("user@user.com")
 unless user
-  user = FactoryBot.create(:private_user, :email => "user@user.com", :password => "password")
+  user = FactoryBot.create(:private_user, :email => "user@user.com", :password => "password", show_on_map: true)
 end
 
 user_legal = User.find_by_email("le@le.com")
 unless user_legal
-  user_legal = FactoryBot.create(:legal_entity, :paypal_data, :with_unified_transport_information, :email => "le@le.com", :password => "password")
+  user_legal = FactoryBot.create(:legal_entity, :paypal_data, :with_unified_transport_information, :email => "le@le.com", :password => "password", show_on_map: true)
 end
 
 require_relative 'fixtures/category_seed_data.rb'
