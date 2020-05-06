@@ -36,12 +36,16 @@ html<> class='no-js' lang=I18n.locale
     - if controller.controller_name == 'welcome'
       .map-container
         = render '/welcome/map'
-      
+
     .wrapper
       main.l-main
         = yield
 
-    - cache 'footer' do
-      = render '/layouts/partials/footer'
+    - if controller.controller_name != 'welcome'
+      - cache 'footer' do
+        = render '/layouts/partials/footer'
+    - else controller.controller_name == 'welcome'
+      - cache 'footer_reduced' do
+        = render '/layouts/partials/footer_reduced'
 
     = render '/layouts/partials/additional_assets'
