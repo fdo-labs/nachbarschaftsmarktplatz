@@ -39,6 +39,11 @@ css:
         width: 100%;
     }
 
+    /* close botton visibility only due to high z-index */
+    .leaflet-sidebar .close {
+    z-index: 1001;
+    }
+
 javascript:
     // initialize the map
     var map = L.map('map', { zoomControl: #{defined?(zoomControl) ? zoomControl : true } }).setView([52.511946, 13.406166], 12);
@@ -63,7 +68,7 @@ javascript:
     //sidebar = document.querySelector('#shop-info')
 
     var sidebar = L.control.sidebar('sidebar', {
-      closeButton: false,
+      closeButton: true,
       position: 'left',
       autoPan: false,
     });
