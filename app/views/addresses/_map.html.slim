@@ -68,7 +68,9 @@ javascript:
     ).addTo(map);
 
     document.addEventListener('DOMContentLoaded', function(){ 
-        document.querySelector('form #address_address_line_1').onblur = add_marker;
+        ['form #address_address_line_1','form #address_zip','form #address_city'].forEach((selector) => {
+            document.querySelector(selector).onblur = add_marker;
+        });
         add_marker(); // set initial marker
     }, false);
 
