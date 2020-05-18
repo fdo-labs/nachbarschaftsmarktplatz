@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   enable_extension "plpgsql"
 
   create_table "addresses", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
-    t.string "first_name", limit: 255
-    t.string "last_name", limit: 255
-    t.string "company_name", limit: 255
-    t.string "address_line_1", limit: 255
-    t.string "address_line_2", limit: 255
-    t.string "zip", limit: 255
-    t.string "city", limit: 255
-    t.string "country", limit: 255
+    t.string "title"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company_name"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "zip"
+    t.string "city"
+    t.string "country"
     t.integer "user_id"
     t.boolean "stashed", default: false
     t.float "longitude"
@@ -33,19 +33,19 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "articles", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.string "condition", limit: 255
+    t.string "condition"
     t.bigint "price_cents", default: 100
-    t.string "currency", limit: 255
+    t.string "currency"
     t.boolean "fair", default: false
-    t.string "fair_kind", limit: 255
-    t.string "fair_seal", limit: 255
+    t.string "fair_kind"
+    t.string "fair_seal"
     t.boolean "ecologic", default: false
-    t.string "ecologic_seal", limit: 255
+    t.string "ecologic_seal"
     t.boolean "small_and_precious", default: false
     t.text "small_and_precious_reason"
     t.boolean "small_and_precious_handmade", default: false
@@ -56,16 +56,16 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.bigint "calculated_fair_cents", default: 0, null: false
     t.bigint "calculated_friendly_cents", default: 0, null: false
     t.bigint "calculated_fee_cents", default: 0, null: false
-    t.string "condition_extra", limit: 255
+    t.string "condition_extra"
     t.boolean "small_and_precious_eu_small_enterprise"
-    t.string "ecologic_kind", limit: 255
+    t.string "ecologic_kind"
     t.text "upcycling_reason"
-    t.string "slug", limit: 255
+    t.string "slug"
     t.boolean "transport_pickup"
     t.boolean "transport_type1"
     t.boolean "transport_type2"
-    t.string "transport_type1_provider", limit: 255
-    t.string "transport_type2_provider", limit: 255
+    t.string "transport_type1_provider"
+    t.string "transport_type2_provider"
     t.integer "transport_type1_price_cents", default: 0, null: false
     t.integer "transport_type2_price_cents", default: 0, null: false
     t.boolean "payment_bank_transfer"
@@ -75,17 +75,17 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.boolean "payment_invoice"
     t.integer "payment_cash_on_delivery_price_cents", default: 0, null: false
     t.integer "basic_price_cents", default: 0
-    t.string "basic_price_amount", limit: 255
-    t.string "state", limit: 255
+    t.string "basic_price_amount"
+    t.string "state"
     t.integer "vat", default: 0
-    t.string "custom_seller_identifier", limit: 255
-    t.string "gtin", limit: 255
+    t.string "custom_seller_identifier"
+    t.string "gtin"
     t.integer "transport_type1_number", default: 1
     t.integer "transport_type2_number", default: 1
     t.integer "discount_id"
     t.bigint "friendly_percent_organisation_id"
-    t.string "article_template_name", limit: 255
-    t.string "transport_time", limit: 255
+    t.string "article_template_name"
+    t.string "transport_time"
     t.integer "quantity_available"
     t.boolean "unified_transport"
     t.boolean "swappable", default: false
@@ -115,9 +115,9 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   create_table "business_transactions", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "selected_transport", limit: 255
-    t.string "selected_payment", limit: 255
-    t.string "state", limit: 255
+    t.string "selected_transport"
+    t.string "selected_payment"
+    t.string "state"
     t.text "message"
     t.integer "quantity_bought"
     t.bigint "parent_id"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.boolean "refunded_fee", default: false
     t.boolean "tos_bike_courier_accepted", default: false
     t.text "bike_courier_message"
-    t.string "bike_courier_time", limit: 255
+    t.string "bike_courier_time"
     t.boolean "courier_emails_sent", default: false
     t.datetime "courier_emails_sent_at"
     t.index ["article_id"], name: "index_business_transactions_on_article_id"
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "desc", limit: 255
+    t.string "name"
+    t.string "desc"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -166,25 +166,25 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.integer "children_count", default: 0
     t.integer "weight"
     t.integer "view_columns", default: 2
-    t.string "slug", limit: 255
+    t.string "slug"
     t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.integer "user_id"
+    t.string "commentable_type"
     t.integer "commentable_id"
-    t.string "commentable_type", limit: 255
     t.text "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["commentable_id", "commentable_type", "updated_at"], name: "index_comments_for_popularity_worker"
-    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "contents", id: :serial, force: :cascade do |t|
-    t.string "key", limit: 255
+    t.string "key"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -192,11 +192,11 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "direct_debit_mandates", id: :serial, force: :cascade do |t|
-    t.string "reference", limit: 255
+    t.string "reference"
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "state", limit: 255
+    t.string "state"
     t.datetime "activated_at"
     t.datetime "last_used_at"
     t.datetime "revoked_at"
@@ -204,7 +204,7 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "discounts", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
     t.text "description"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 20200428104012) do
 
   create_table "exhibits", id: :serial, force: :cascade do |t|
     t.bigint "article_id"
-    t.string "queue", limit: 255
+    t.string "queue"
     t.bigint "related_article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -243,73 +243,73 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.text "awareness_raising_checkboxes"
     t.boolean "controlling", default: false
     t.text "controlling_explanation"
-    t.string "support_other", limit: 255
-    t.string "labor_conditions_other", limit: 255
-    t.string "environment_protection_other", limit: 255
-    t.string "controlling_other", limit: 255
-    t.string "awareness_raising_other", limit: 255
+    t.string "support_other"
+    t.string "labor_conditions_other"
+    t.string "environment_protection_other"
+    t.string "controlling_other"
+    t.string "awareness_raising_other"
     t.index ["article_id"], name: "index_fair_trust_questionnaires_on_article_id"
   end
 
   create_table "feedbacks", id: :serial, force: :cascade do |t|
     t.text "text"
-    t.string "subject", limit: 255
-    t.string "from", limit: 255
-    t.string "to", limit: 255
-    t.string "variety", limit: 255
+    t.string "subject"
+    t.string "from"
+    t.string "to"
+    t.string "variety"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "article_id"
-    t.string "feedback_subject", limit: 255
-    t.string "help_subject", limit: 255
+    t.string "feedback_subject"
+    t.string "help_subject"
     t.text "source_page"
-    t.string "user_agent", limit: 255
-    t.string "forename", limit: 255
-    t.string "lastname", limit: 255
-    t.string "organisation", limit: 255
-    t.string "phone", limit: 255
+    t.string "user_agent"
+    t.string "forename"
+    t.string "lastname"
+    t.string "organisation"
+    t.string "phone"
     t.index ["article_id"], name: "index_feedbacks_on_article_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
   create_table "hearts", id: :serial, force: :cascade do |t|
     t.integer "user_id"
+    t.string "heartable_type"
     t.integer "heartable_id"
-    t.string "heartable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "user_token", limit: 255
+    t.string "user_token"
     t.index ["heartable_id", "heartable_type", "updated_at"], name: "index_hearts_for_popularity_worker"
-    t.index ["heartable_id", "heartable_type"], name: "index_hearts_on_heartable_id_and_heartable_type"
+    t.index ["heartable_type", "heartable_id"], name: "index_hearts_on_heartable_type_and_heartable_id"
     t.index ["user_id", "heartable_id", "heartable_type"], name: "index_hearts_on_user_id_and_heartable_id_and_heartable_type", unique: true
     t.index ["user_id"], name: "index_hearts_on_user_id"
     t.index ["user_token", "heartable_id", "heartable_type"], name: "index_hearts_on_user_token_and_heartable_id_and_heartable_type", unique: true
   end
 
   create_table "images", id: :serial, force: :cascade do |t|
-    t.string "image_file_name", limit: 255
-    t.string "image_content_type", limit: 255
+    t.string "image_file_name"
+    t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "imageable_id"
-    t.string "type", limit: 255
+    t.string "type"
     t.boolean "is_title"
-    t.string "external_url", limit: 255
+    t.string "external_url"
     t.boolean "image_processing"
     t.index ["imageable_id", "type"], name: "index_images_on_imageable_id_and_type"
   end
 
   create_table "libraries", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.boolean "public"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "library_elements_count", default: 0
-    t.string "exhibition_name", limit: 255
+    t.string "exhibition_name"
     t.integer "hearts_count", default: 0
     t.integer "comments_count", default: 0
     t.float "popularity", default: 0.0
@@ -336,14 +336,14 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.boolean "tos_accepted"
     t.boolean "unified_transport", default: false
     t.boolean "unified_payment", default: false
-    t.string "unified_payment_method", limit: 255
+    t.string "unified_payment_method"
     t.bigint "transport_address_id"
     t.bigint "payment_address_id"
-    t.string "purchase_id", limit: 255
+    t.string "purchase_id"
     t.datetime "sold_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "unified_transport_provider", limit: 255
+    t.string "unified_transport_provider"
     t.integer "unified_transport_maximum_articles"
     t.bigint "unified_transport_price_cents", default: 0
     t.bigint "free_transport_at_price_cents"
@@ -370,13 +370,13 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   create_table "mass_upload_articles", id: :serial, force: :cascade do |t|
     t.integer "mass_upload_id"
     t.integer "article_id"
-    t.string "action", limit: 255
+    t.string "action"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "row_index"
     t.text "validation_errors"
     t.text "article_csv"
-    t.string "process_identifier", limit: 255
+    t.string "process_identifier"
     t.index ["article_id"], name: "index_mass_upload_articles_on_article_id"
     t.index ["mass_upload_id"], name: "index_mass_upload_articles_on_mass_upload_id"
     t.index ["row_index", "mass_upload_id"], name: "index_mass_upload_articles_on_row_index_and_mass_upload_id"
@@ -389,11 +389,11 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "file_file_name", limit: 255
-    t.string "file_content_type", limit: 255
+    t.string "file_file_name"
+    t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
-    t.string "state", limit: 255
+    t.string "state"
     t.index ["user_id"], name: "index_mass_uploads_on_user_id"
   end
 
@@ -401,17 +401,17 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.text "message"
     t.boolean "open"
     t.integer "user_id"
-    t.string "path", limit: 255
-    t.string "color", limit: 255
+    t.string "path"
+    t.string "color"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
   create_table "payments", id: :serial, force: :cascade do |t|
-    t.string "pay_key", limit: 255
-    t.string "state", limit: 255
-    t.string "type", limit: 255
+    t.string "pay_key"
+    t.string "state"
+    t.string "type"
     t.text "error"
     t.text "last_ipn"
     t.bigint "line_item_group_id", null: false
@@ -422,9 +422,9 @@ ActiveRecord::Schema.define(version: 20200428104012) do
 
   create_table "rails_admin_histories", id: :serial, force: :cascade do |t|
     t.text "message"
-    t.string "username", limit: 255
+    t.string "username"
     t.integer "item"
-    t.string "table", limit: 255
+    t.string "table"
     t.integer "month", limit: 2
     t.bigint "year"
     t.datetime "created_at", null: false
@@ -433,7 +433,7 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "ratings", id: :serial, force: :cascade do |t|
-    t.string "rating", limit: 255
+    t.string "rating"
     t.text "text"
     t.bigint "rated_user_id"
     t.datetime "created_at"
@@ -443,17 +443,17 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.index ["rated_user_id"], name: "index_ratings_on_rated_user_id"
   end
 
-  create_table "refunds", id: :serial, force: :cascade do |t|
-    t.string "reason", limit: 255
+  create_table "refunds", force: :cascade do |t|
+    t.string "reason"
     t.text "description"
     t.integer "business_transaction_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["business_transaction_id"], name: "index_refunds_on_business_transaction_id"
   end
 
   create_table "sessions", id: :serial, force: :cascade do |t|
-    t.string "session_id", limit: 255, null: false
+    t.string "session_id", null: false
     t.text "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -474,40 +474,40 @@ ActiveRecord::Schema.define(version: 20200428104012) do
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "admin", default: false
-    t.string "confirmation_token", limit: 255
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email", limit: 255
+    t.string "unconfirmed_email"
     t.boolean "banned"
-    t.string "nickname", limit: 255
+    t.string "nickname"
     t.text "about_me"
     t.text "terms"
     t.text "cancellation"
     t.text "about"
-    t.string "phone", limit: 255
-    t.string "mobile", limit: 255
-    t.string "fax", limit: 255
-    t.string "slug", limit: 255
-    t.string "type", limit: 255
-    t.string "bank_code", limit: 255
-    t.string "bank_name", limit: 255
-    t.string "bank_account_owner", limit: 255
-    t.string "bank_account_number", limit: 255
-    t.string "paypal_account", limit: 255
-    t.string "seller_state", limit: 255
-    t.string "buyer_state", limit: 255
+    t.string "phone"
+    t.string "mobile"
+    t.string "fax"
+    t.string "slug"
+    t.string "type"
+    t.string "bank_code"
+    t.string "bank_name"
+    t.string "bank_account_owner"
+    t.string "bank_account_number"
+    t.string "paypal_account"
+    t.string "seller_state"
+    t.string "buyer_state"
     t.boolean "verified"
     t.boolean "bankaccount_warning"
     t.float "percentage_of_positive_ratings", default: 0.0
@@ -519,17 +519,17 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.bigint "max_value_of_goods_cents_bonus", default: 0
     t.integer "fastbill_subscription_id"
     t.integer "fastbill_id"
-    t.string "iban", limit: 255
-    t.string "bic", limit: 255
+    t.string "iban"
+    t.string "bic"
     t.boolean "vacationing", default: false
     t.boolean "newsletter", default: false
-    t.string "cancellation_form_file_name", limit: 255
-    t.string "cancellation_form_content_type", limit: 255
+    t.string "cancellation_form_file_name"
+    t.string "cancellation_form_content_type"
     t.integer "cancellation_form_file_size"
     t.datetime "cancellation_form_updated_at"
     t.bigint "standard_address_id"
     t.integer "unified_transport_maximum_articles", default: 1
-    t.string "unified_transport_provider", limit: 255
+    t.string "unified_transport_provider"
     t.bigint "unified_transport_price_cents", default: 0
     t.boolean "free_transport_available"
     t.bigint "free_transport_at_price_cents", default: 0
@@ -537,15 +537,15 @@ ActiveRecord::Schema.define(version: 20200428104012) do
     t.boolean "heavy_uploader", default: false
     t.boolean "uses_vouchers", default: false
     t.bigint "total_purchase_donations_cents", default: 0
-    t.string "belboon_tracking_token", limit: 255
+    t.string "belboon_tracking_token"
     t.datetime "belboon_tracking_token_set_at"
     t.integer "voluntary_contribution"
-    t.string "invoicing_email", limit: 255, default: "", null: false
-    t.string "order_notifications_email", limit: 255, default: "", null: false
+    t.string "invoicing_email", default: "", null: false
+    t.string "order_notifications_email", default: "", null: false
     t.boolean "direct_debit_exemption", default: false
     t.integer "next_direct_debit_mandate_number", default: 1
     t.boolean "marketplace_owner_account", default: false
-    t.text "referral", default: ""
+    t.string "referral", default: ""
     t.boolean "show_on_map"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
