@@ -71,8 +71,10 @@ module WelcomeHelper
   end
 
   def user_addresses_as_json
-    User.where(show_on_map: true).map{ |user, index| 
-      address = Address.find_by(user:user); 
+    User.where(show_on_map: true)
+        .includes(:standard_address, :image)
+        .map{ |user, index| 
+      address = user.standard_address; 
 
       if address === nil || address.longitude == nil || address.latitude == nil 
         nil
