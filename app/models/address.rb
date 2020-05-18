@@ -16,7 +16,8 @@ class Address < ApplicationRecord
   validates :zip, presence: true, zip: true, length: { maximum: 5 }
   validates :city, presence: true, length: { maximum: 150 }
   validates :country, presence: true, length: { maximum: 150 }
-  validates :longitude, presence: true
+  validates :longitude, allow_nil: true, numericality: {only_float: true}
+  validates :latitude, allow_nil: true, numericality: {only_float: true}
 
   extend Sanitization
 
