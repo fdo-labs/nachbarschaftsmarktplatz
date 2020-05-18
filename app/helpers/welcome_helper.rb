@@ -86,7 +86,7 @@ module WelcomeHelper
           image: user.image_url(:profile),
           latitude: address.latitude,
           longitude: address.longitude,
-          shop_url: user_path(user)
+          shop_url: (user.articles.count > 0 || user.external_website.blank?) ? user_path(user) : user.external_website
         }
       end
       }.reject(&:nil?).to_json

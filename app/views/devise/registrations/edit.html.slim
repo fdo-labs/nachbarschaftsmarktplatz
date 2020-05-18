@@ -132,6 +132,8 @@ h1= t('common.actions.edit_profile')
 
           h4= "#{ t('formtastic.labels.user.about_me') }"
 
+          = f.input :external_website, limit: 2000, label: t('formtastic.labels.user.external_website')
+          / yes, 2k is the upper limit (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers)
           = f.input :about_me, label:false, as: :text, limit: 2500,
             input_html: { class: 'tinymce' }
           = tinymce
