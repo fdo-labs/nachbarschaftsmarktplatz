@@ -10,6 +10,8 @@ FactoryBot.define do
     zip { '51147' }
     city { 'Köln' }
     country { 'Deutschland' }
+    longitude { 13.3657628 }
+    latitude { 52.5334548 }
 
     factory :address_with_bike_courier_zip, traits: [:with_bike_courier_zip]
 
@@ -17,6 +19,8 @@ FactoryBot.define do
       address_line_1 { 'Eldenaer Straße 17' }
       zip { '10247' }
       city { 'Berlin' }
+      longitude { 13.4653686 }
+      latitude { 52.5199007 }
     end
   end
 
@@ -30,5 +34,7 @@ FactoryBot.define do
     zip { '51147' }
     city { 'Köln' }
     country { 'Deutschland' }
+    longitude { 13.3657628 }
+    latitude { 52.5334548 }
   end
 end

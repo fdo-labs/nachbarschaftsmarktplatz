@@ -5,5 +5,5 @@
 module AddressParams
   extend ActiveSupport::Concern
 
-  ADDRESS_PARAMS = %i(title first_name last_name company_name address_line_1 address_line_2 city zip country).freeze
+  ADDRESS_PARAMS = %i(title first_name last_name company_name address_line_1 address_line_2 city zip country longitude latitude).freeze
 end

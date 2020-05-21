@@ -92,7 +92,7 @@ Fairmondo::Application.routes.draw do
     get 'set_transport_ready', on: :member  # TODO: do not use or replace by POST route
   end
 
-  get '/' => redirect('/articles')  # redirect index to articles page, as index is currently very empty 
+  #get '/' => redirect('/articles')  # redirect index to articles page, as index is currently very empty 
 
   get 'welcome/reconfirm_terms'
   post 'welcome/reconfirm_terms'

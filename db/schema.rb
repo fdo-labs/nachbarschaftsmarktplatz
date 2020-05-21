@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802092305) do
+ActiveRecord::Schema.define(version: 20200518215758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20180802092305) do
     t.string "country"
     t.integer "user_id"
     t.boolean "stashed", default: false
+    t.float "longitude"
+    t.float "latitude"
     t.index ["user_id"], name: "addresses_user_id_index"
   end
 
@@ -544,6 +546,8 @@ ActiveRecord::Schema.define(version: 20180802092305) do
     t.integer "next_direct_debit_mandate_number", default: 1
     t.boolean "marketplace_owner_account", default: false
     t.string "referral", default: ""
+    t.boolean "show_on_map"
+    t.string "external_website"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

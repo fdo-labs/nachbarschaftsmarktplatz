@@ -29,6 +29,7 @@ de:
         mobile: "Telefonnummer (Mobil)"
         fax: "Fax"
         about_me: "Hier kannst Du Dich anderen Nutzer*innen vorstellen. Dein Text erscheint in Deinem Profil."
+        external_website: "Link zu deiner Webseite (z.B. 'https://beispiel.de/')"
         terms: "AGB"
         cancellation: "Widerrufsbelehrung"
         cancellation_form: "Widerrufsformular (PDF-Datei)"
@@ -54,6 +55,7 @@ de:
         tos_accepted: "Ich stimme %{legal} und %{privacy} zu."
         invoicing_email: "E-Mail-Adresse für Rechnungen"
         order_notifications_email: "E-Mail-Adresse für Bestellbenachrichtigungen"
+        show_on_map: "Zeige meine Addresse auf der Karte"
       private_user:
         <<: *user
       legal_entity:

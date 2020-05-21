@@ -9,14 +9,16 @@ class FastbillWorker
                   retry: 20, # this means approx 6 days
                   backtrace: true
 
+  # disable this worker since we are not working with fastbill
+  # but keep this in place in case we decide to go back to a billing service of some kind
   def perform(id)
-    BusinessTransaction.transaction do
-      bt = BusinessTransaction.lock.find(id)
+    #BusinessTransaction.transaction do
+    #  bt = BusinessTransaction.lock.find(id)
       # check if bt is qualified for discount
-      Discount.discount_chain(bt) if bt.article_discount_id
+    #  Discount.discount_chain(bt) if bt.article_discount_id
       # Start the fastbill chain, to create invoices and add items to invoice
-      api = FastbillAPI.new(bt)
-      api.fastbill_chain
-    end
+    #  api = FastbillAPI.new(bt)
+    #  api.fastbill_chain
+    #end
   end
 end

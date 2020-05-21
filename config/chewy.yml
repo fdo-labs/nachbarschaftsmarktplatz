@@ -5,7 +5,9 @@ test:
   prefix: 'test'
 development:
   host: 'localhost:9200'
+  prefix: 'development'
 production:
   host: 'localhost:9200' # ES 5.4.0
 staging:
   host: 'localhost:9200' # ES 5.4.0
+  prefix: 'staging'

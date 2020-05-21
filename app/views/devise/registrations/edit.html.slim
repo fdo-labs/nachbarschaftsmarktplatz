@@ -95,6 +95,10 @@ h1= t('common.actions.edit_profile')
             = current_user.is_a?(LegalEntity) ? t('users.visibility.public') : t('users.visibility.private')
 
           h3= t('users.form_titles.address')
+
+          / show map in address area
+          = render 'addresses/map'
+
           = semantic_fields_for @user.standard_address do |af|
             = af.inputs do
               - if @user.is_a?(LegalEntity)
@@ -104,6 +108,9 @@ h1= t('common.actions.edit_profile')
               = af.input :zip, required: true
               = af.input :city, required: true
               = af.input :country, required: true, as: :select, collection: [t('users.countries.germany')]
+              = af.input :longitude, required: false, as: :hidden
+              = af.input :latitude, required: false, as: :hidden
+              = f.input :show_on_map, required: true, as: :boolean
 
           = f.input :phone
           = f.input :mobile
@@ -125,6 +132,8 @@ h1= t('common.actions.edit_profile')
 
           h4= "#{ t('formtastic.labels.user.about_me') }"
 
+          = f.input :external_website, limit: 2000, label: t('formtastic.labels.user.external_website')
+          / yes, 2k is the upper limit (https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers)
           = f.input :about_me, label:false, as: :text, limit: 2500,
             input_html: { class: 'tinymce' }
           = tinymce
