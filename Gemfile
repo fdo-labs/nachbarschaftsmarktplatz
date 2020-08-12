@@ -131,7 +131,7 @@ group :development do
   # Capistrano deployment
   gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano-bundler', '~> 1.6'
-  gem 'capistrano-rbenv'
+  gem 'capistrano-rvm'
 end
 
 group :test do

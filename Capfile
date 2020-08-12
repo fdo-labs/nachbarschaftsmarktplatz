@@ -7,7 +7,7 @@ install_plugin Capistrano::SCM::Git
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
-require 'capistrano/rbenv'
+require 'capistrano/rvm'
 
 require 'capistrano/bundler'
 
